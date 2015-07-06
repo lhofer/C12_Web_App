@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+require 'csv'
+
+csv_text = File.read('public/state_electricity_lbs_kwh.csv')
+csv = CSV.parse(csv_text)
+csv.each do |row|
+  StateElectricity.create!(row.to_hash)
+end

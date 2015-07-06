@@ -1,0 +1,10 @@
+<h1> Food </h1>
+<%= form_for(current_user.entries.build) do |f| %>
+  <p>
+    <%= f.label :diet %><br>
+    <%= f.text_field :diet_type %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

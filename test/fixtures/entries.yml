@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  num_people: 1
+  state: MyString
+  electricity: 1.5
+  natural_gas: 1.5
+  heating_oil: 1.5
+  year: 1
+  model: MyString
+  mpg: 1.5
+  mpm: 1.5
+  diet_type: MyString
+  user_id: 
+
+two:
+  num_people: 1
+  state: MyString
+  electricity: 1.5
+  natural_gas: 1.5
+  heating_oil: 1.5
+  year: 1
+  model: MyString
+  mpg: 1.5
+  mpm: 1.5
+  diet_type: MyString
+  user_id: 

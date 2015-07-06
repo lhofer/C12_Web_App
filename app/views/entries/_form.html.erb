@@ -1,0 +1,28 @@
+<%= form_for(current_user.entries.build) do |f| %>
+  <p>
+    <%= f.label :people %><br>
+    <%= f.text_field :num_people %>
+  </p>
+
+  <p>
+    <%= simple_form_for (current_user.entries.build) do |f| %>
+    <%= f.input :state, :collection => ["AK","AL","AR","AZ","CA","CO","CT","DC","DE","FL","GA","GU","HI","IA","ID", "IL","IN","KS","KY","LA","MA","MD","ME","MH","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY", "OH","OK","OR","PA","PR","PW","RI","SC","SD","TN","TX","UT","VA","VI","VT","WA","WI","WV","WY"] %>
+    <% end %>
+  </p>
+  
+  <p>
+    <%= f.label :electricty %><br>
+    <%= f.text_field :electricity %>
+  </p>
+  <p>
+    <%= f.label :gas %><br>
+    <%= f.text_field :natural_gas %>
+  </p>
+   <p>
+    <%= f.label :oil %><br>
+    <%= f.text_field :heating_oil %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
