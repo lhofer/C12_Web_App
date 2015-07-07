@@ -14,7 +14,8 @@
   <a href="#" class="form_type">Date |</a>
         <div class="form">Date Form
           <p>
-            <%= f.input :date %>
+            <%= f.input :date , as: :date, start_year: Date.today.year - 90,  
+                              end_year: Date.today.year, discard_day: true %>
           </p>
           <p>
             <%= f.submit %>
@@ -59,7 +60,7 @@
     <a href="#" class="form_type">Food</a>
         <div class="form">Food Form
           <p>
-              <%= f.input :diet_type, :collection => ["Meat Lover", "Average", "No Beef", "Vegetarian", "Vegan"] %>
+              <%= f.input :diet_type, :collection => ["meat lover", "average", "no beef", "vegetarian", "vegan"] %>
           </p>
           <p>
             <%= f.submit %>

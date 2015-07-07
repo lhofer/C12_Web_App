@@ -1,94 +1,53 @@
 <html>
-<head>
-<meta charset=utf-8 />
-<title>Driving directions</title>
-<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-<script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
-<link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
-<style>
-  body { margin:0; padding:0; }
-  #map { position:absolute; top:0; bottom:0; width:100%; }
-</style>
-</head>
-<body>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASWK9aumUuPhwdlez2QDOpGQyeEnc9ZbY&sensor=true"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
-
-<style>
-#inputs,
-#errors,
-#directions {
-    position: absolute;
-    width: 33.3333%;
-    max-width: 300px;
-    min-width: 200px;
-}
-
-#inputs {
-    z-index: 10;
-    top: 10px;
-    left: 10px;
-}
-
-#directions {
-    z-index: 99;
-    background: rgba(0,0,0,.8);
-    top: 0;
-    right: 0;
-    bottom: 0;
-    overflow: auto;
-}
-
-#errors {
-    z-index: 8;
-    opacity: 0;
-    padding: 10px;
-    border-radius: 0 0 3px 3px;
-    background: rgba(0,0,0,.25);
-    top: 90px;
-    left: 10px;
-}
-
-</style>
-
-<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/mapbox-directions.js/v0.3.0/mapbox.directions.js'></script>
-<link rel='stylesheet' href='https://api.tiles.mapbox.com/mapbox.js/plugins/mapbox-directions.js/v0.3.0/mapbox.directions.css' type='text/css' />
-
-<div id='map'></div>
-<div id='inputs'></div>
-<div id='errors'></div>
-<div id='directions'>
-  <div id='routes'></div>
-  <div id='instructions'></div>
-</div>
-<script>
-L.mapbox.accessToken = 'pk.eyJ1IjoicmtyYWJlayIsImEiOiIzZjBkZDQ2OGJhNmRhYWZhNDdkZmE0YzMwYjkwNDNiYyJ9.4AsJUOjYe0gfKMrSjtb0Ww';
-var map = L.mapbox.map('map', 'rkrabek.mlb0mjmh', {
-    zoomControl: false
-}).setView([40, -74.50], 9);
-
-// move the attribution control out of the way
-map.attributionControl.setPosition('bottomleft');
-
-// create the initial directions object, from which the layer
-// and inputs will pull data.
-var directions = L.mapbox.directions();
-
-var directionsLayer = L.mapbox.directions.layer(directions)
-    .addTo(map);
-
-var directionsInputControl = L.mapbox.directions.inputControl('inputs', directions)
-    .addTo(map);
-
-var directionsErrorsControl = L.mapbox.directions.errorsControl('errors', directions)
-    .addTo(map);
-
-var directionsRoutesControl = L.mapbox.directions.routesControl('routes', directions)
-    .addTo(map);
-
-var directionsInstructionsControl = L.mapbox.directions.instructionsControl('instructions', directions)
-    .addTo(map);
-</script>
-
-
-</body>
+    <script>
+        var map;
+        function initialize() {
+          map = new google.maps.Map(document.getElementById('map-canvas'), {
+            zoom: 6,
+            center: {lat: 35.397, lng: -100.644}
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+          });
+          var mapObject = new google.maps.Map(document.getElementById("map"), myOptions);
+        }
+        
+        google.maps.event.addDomListener(window, 'load', initialize);
+        
+        $("#calculate-route").submit(function(event) {
+          event.preventDefault();
+          calculateRoute($("#from").val(), $("#to").val());
+        });
+    </script>
+  </head>
+  <body>
+        <form id="calculate-route" name="calculate-route" action="#" method="get">
+          <label for="from">From:</label>
+          <input type="text" id="from" name="from" required="required" placeholder="An address" size="30" />
+          <a id="from-link" href="#">Get my position</a>
+          <br />
+         
+          <label for="to">To:</label>
+          <input type="text" id="to" name="to" required="required" placeholder="Another address" size="30" />
+          <a id="to-link" href="#">Get my position</a>
+          <br />
+         
+          <input type="submit" />
+          <input type="reset" />
+        </form>
+    <div id="map-canvas"></div>
+    
+  </body>
 </html>

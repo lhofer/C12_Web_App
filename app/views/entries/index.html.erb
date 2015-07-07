@@ -6,12 +6,14 @@
 
 <ul>
     <% @entries.each do |entry| %>
-        <li><%= entry.date %> </li>
+        <li><%= entry.date.month %> - <%= entry.date.year %> </li>
         <%= link_to 'Show', entry_path(entry) %> | 
         <%= link_to 'Edit', edit_entry_path(entry) %> |
         <%= link_to 'Delete', [entry],
                     				method: :delete,
-                    				data: { confirm: 'Are you sure?' } %>
+                    				data: { confirm: 'Are you sure?' } %> |
+        <%= total_footprint(entry) %>| 
+        <%= entry.footprint %>
         <% end %>
 </ul>
 

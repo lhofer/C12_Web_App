@@ -1,6 +1,11 @@
-<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+<%= javascript_include_tag "//www.google.com/jsapi" %>
 <%= javascript_include_tag "path/to/highcharts.js", "chartkick" %>
 
 <h1> testing </h1>
 
-<%= line_chart User.group_by_day(:created_at).count %>
+
+<%= column_chart @data, stacked: true %> 
+
+<%= column_chart current_user.entries.group_by_month(:date).sum(:electricity) %>
+
+
