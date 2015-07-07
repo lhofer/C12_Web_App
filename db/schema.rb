@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150706092650) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "diet_carbons", force: :cascade do |t|
     t.string   "diet"
     t.float    "carbon"
@@ -35,7 +38,7 @@ ActiveRecord::Schema.define(version: 20150706092650) do
     t.date     "date"
   end
 
-  add_index "entries", ["user_id"], name: "index_entries_on_user_id"
+  add_index "entries", ["user_id"], name: "index_entries_on_user_id", using: :btree
 
   create_table "state_electricities", force: :cascade do |t|
     t.string   "state"
@@ -59,7 +62,8 @@ ActiveRecord::Schema.define(version: 20150706092650) do
     t.datetime "updated_at",                          null: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "entries", "users"
 end

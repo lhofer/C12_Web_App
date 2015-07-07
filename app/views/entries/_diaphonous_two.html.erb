@@ -1,3 +1,15 @@
+<% if @entry.errors.any? %>
+		<div id="error_explanation" >
+			<h3>
+				<%= pluralize(@entry.errors.count, "error") %> prohibited this entry from being saved: </h3>
+			<ul>
+				<% @entry.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+	
 <%= simple_form_for(@entry) do |f| %>
   <a href="#" class="form_type">Date |</a>
         <div class="form">Date Form

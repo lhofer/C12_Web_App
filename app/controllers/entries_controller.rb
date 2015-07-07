@@ -36,7 +36,7 @@ class EntriesController < ApplicationController
    		end
     end
     
-    def maptest
+    def charttest
         @entry = Entry.new
     end
     
