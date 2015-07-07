@@ -1,0 +1,21 @@
+   <ul>Home
+        <li>State: <%= @entry.state %> </li>
+        <li>Number of People: <%= @entry.num_people %> </li>
+        <li>Electricity: <%= @entry.electricity %> kWh </li>
+        <li>Natural Gas: <%= @entry.natural_gas %> therms </li>
+        <li>Heating Oil: <%= @entry.heating_oil %> gal </li>
+    </ul>
+    <ul>Car
+        <li>MPG: <%= @entry.mpg %> </li>
+        <li>Miles Driven: <%= @entry.miles_driven %> </li>
+        <li>Date: <%= @entry.date %></li>
+    </ul>
+    <ul>Food
+        <li>Diet Type: <%= @entry.diet_type %></li>
+    </ul>
+    
+    <p>state electricity efficiency <%= electricity_efficiency(@entry) %> metric tons per kWh</p>
+    <p>diet carbon footprint <%= diet_carbon_footprint(@entry) %> metric tons per month  </p>
+    <p>total month carbon footprint: <%= total_footprint(@entry) %> </p>
+    
+<p><%= link_to 'Back', entries_path %></p>

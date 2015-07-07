@@ -1,3 +1,4 @@
+
 <p>
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal1">
 Home
@@ -11,7 +12,7 @@ Home
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Home</h4>
       </div>
-        <%= render 'form' %>
+        <%= render 'home_form' %>
     </div>
   </div>
 </div>
@@ -30,7 +31,7 @@ Car
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Car</h4>
       </div>
-        <%= render 'form_two' %>
+        <%= render 'car_form' %>
     </div>
   </div>
 </div>
@@ -49,8 +50,12 @@ Food
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Diet</h4>
       </div>
-        <%= render 'form_three' %>
+        <%= render 'diet_form' %>
     </div>
   </div>
 </div>
+</p>
+
+<p>
+  <%= render 'date_form' %>
 </p>

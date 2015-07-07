@@ -1,2 +1,18 @@
-<%= render 'test' %>
+
+<p><a <%= link_to 'Create Entry', new_entry_path %> </a></p>
+
+<p><a ><%= link_to 'Back', "/" %> </a></p>
+    
+
+<ul>
+    <% @entries.each do |entry| %>
+        <li><%= entry.date %> </li>
+        <%= link_to 'Show', entry_path(entry) %> | 
+        <%= link_to 'Edit', edit_entry_path(entry) %> |
+        <%= link_to 'Delete', [entry],
+                    				method: :delete,
+                    				data: { confirm: 'Are you sure?' } %>
+        <% end %>
+</ul>
+
 

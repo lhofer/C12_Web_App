@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150705200819) do
+ActiveRecord::Schema.define(version: 20150706092650) do
+
+  create_table "diet_carbons", force: :cascade do |t|
+    t.string   "diet"
+    t.float    "carbon"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "entries", force: :cascade do |t|
     t.integer  "num_people"
@@ -19,14 +26,13 @@ ActiveRecord::Schema.define(version: 20150705200819) do
     t.float    "electricity"
     t.float    "natural_gas"
     t.float    "heating_oil"
-    t.integer  "year"
-    t.string   "model"
     t.float    "mpg"
-    t.float    "mpm"
+    t.float    "miles_driven"
     t.string   "diet_type"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.date     "date"
   end
 
   add_index "entries", ["user_id"], name: "index_entries_on_user_id"
