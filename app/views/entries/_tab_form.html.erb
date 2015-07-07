@@ -1,40 +1,97 @@
-<div class="tabContent" id="about">
-  <h2>About JavaScript tabs</h2>
+
+
+
+<ul id="tabs">
+  <li><a href="#home" "showTab()">Home</a></li>
+  <li><a href="#car" "showTab()">Car</a></li>
+  <li><a href="#diet" "showTab()">Food</a></li>
+</ul>
+
+
+<div class="tabContent" id="home">
+  <h2>Home</h2>
   <div>
-    <p>JavaScript tabs partition your Web page content into tabbed sections. Only one section at a time is visible.</p>
-    <p>The code is written in such a way that the page degrades gracefully in browsers that don't support JavaScript or CSS.</p>
+    <%= simple_form_for(@entry) do |f| %>
+  <p>
+    <%= f.input :state, :collection => ["AK","AL","AR","AZ","CA","CO","CT","DC","DE","FL","GA","GU","HI","IA","ID", "IL","IN","KS","KY","LA","MA","MD","ME","MH","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY", "OH","OK","OR","PA","PR","PW","RI","SC","SD","TN","TX","UT","VA","VI","VT","WA","WI","WV","WY"] %>
+  </p>
+  <p>
+    <%= f.input :num_people %>
+  </p>
+  <p>
+    <%= f.input :electricity %>
+  </p>
+  <p>
+    <%= f.input :natural_gas %>
+  </p>
+   <p>
+    <%= f.input :heating_oil %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
   </div>
 </div>
 
-<ul id="tabs">
-  <li><a href="#about" onlick="showTab()">Home</a></li>
-  <li><a href="#advantages" onlick="showTab()">Car</a></li>
-  <li><a href="#usage" onlick="showTab()">Food</a></li>
-</ul>
+<div class="tabContent" id="car">
+  <h2>Car</h2>
+  <div>
+      <%= form_for(@entry) do |f| %>
+  <p>
+    <%= f.label :MPG %><br>
+    <%= f.text_field :mpg %>
+  </p>
+  <p>
+    <%= f.label :miles %><br>
+    <%= f.text_field :miles_driven %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+  </div>
+</div>
 
+<div class="tabContent" id="diet">
+  <h2>Diet</h2>
+  <div>
+<%= form_for(@entry) do |f| %>
+  <p>
+    <%= f.label :diet %><br>
+    <%= f.text_field :diet_type %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+</div>
+</div>
+
+<head>
 <script type="text/javascript">
 //<![CDATA[
 var tabLinks = new Array();
 var contentDivs = new Array();
 function init() {
 // Grab the tab links and content divs from the page
-var tabListItems = document.getElementById('tabs').childNodes;
-for ( var i = 0; i < tabListItems.length; i++ ) {
-if ( tabListItems[i].nodeName == "LI" ) {
-var tabLink = getFirstChildWithTagName( tabListItems[i], 'A' );
-var id = getHash( tabLink.getAttribute('href') );
-tabLinks[id] = tabLink;
-contentDivs[id] = document.getElementById( id );
-}
-}
-// Assign onclick events to the tab links, and
-// highlight the first tab
-var i = 0;
-for ( var id in tabLinks ) {
-tabLinks[id].onclick = showTab;
-tabLinks[id].onfocus = function() { this.blur() };
-if ( i == 0 ) tabLinks[id].className = 'selected';
-i++;
+  var tabListItems = document.getElementById('tabs').childNodes;
+  for ( var i = 0; i < tabListItems.length; i++ ) {
+    if ( tabListItems[i].nodeName == "LI" ) {
+        var tabLink = getFirstChildWithTagName( tabListItems[i], 'A' );
+        var id = getHash( tabLink.getAttribute('href') );
+        tabLinks[id] = tabLink;
+        contentDivs[id] = document.getElementById( id );
+    }
+  }
+  // Assign onclick events to the tab links, and
+  // highlight the first tab
+  var i = 0;
+  for ( var id in tabLinks ) {
+  tabLinks[id].onclick = showTab;
+  tabLinks[id].onfocus = function() { this.blur() };
+  if ( i == 0 ) tabLinks[id].className = 'selected';
+  i++;
 }
 // Hide all content divs except the first
 var i = 0;
@@ -70,3 +127,17 @@ return url.substring( hashPos + 1 );
 }
 //]]>
 </script>
+
+<style>
+body { font-size: 80%; font-family: 'Lucida Grande', Verdana, Arial, Sans-Serif; }
+ul#tabs { list-style-type: none; margin: 30px 0 0 0; padding: 0 0 0.3em 0; }
+ul#tabs li { display: inline; }
+ul#tabs li a { color: #42454a; background-color: #dedbde; border: 1px solid #c9c3ba; border-bottom: none; padding: 0.3em; text-decoration: none; }
+ul#tabs li a:hover { background-color: #f1f0ee; }
+ul#tabs li a.selected { color: #000; background-color: #f1f0ee; font-weight: bold; padding: 0.7em 0.3em 0.38em 0.3em; }
+div.tabContent { border: 1px solid #c9c3ba; padding: 0.5em; background-color: #f1f0ee; }
+div.tabContent.hide { display: none; }
+</style>
+</head>
+
+<body onload="init()">

@@ -1,5 +1,6 @@
 class EntriesController < ApplicationController
     
+    
     def index
         @entries = current_user.entries
     end
@@ -15,7 +16,7 @@ class EntriesController < ApplicationController
     def create
         @entry = current_user.entries.create(entries_params)
         if @entry.save
-            redirect_to edit_entry_path(@entry)
+            redirect_to entries_path
         else 
             render 'new'
         end
@@ -34,6 +35,10 @@ class EntriesController < ApplicationController
    	    else 
    			render 'edit'
    		end
+    end
+    
+    def maptest
+        @entry = Entry.new
     end
     
     def destroy
