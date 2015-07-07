@@ -47,7 +47,7 @@
     <a href="#" class="form_type">Food</a>
         <div class="form">Food Form
           <p>
-            <%= f.input :diet_type %>
+              <%= f.input :diet_type, :collection => ["Meat Lover", "Average", "No Beef", "Vegetarian", "Vegan"] %>
           </p>
           <p>
             <%= f.submit %>
