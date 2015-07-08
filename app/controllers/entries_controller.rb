@@ -16,7 +16,7 @@ class EntriesController < ApplicationController
     def create
         @entry = current_user.entries.create(entries_params)
         if @entry.save
-            redirect_to entries_path
+            redirect_to charttest_path
         else 
             render 'new'
         end
@@ -30,21 +30,25 @@ class EntriesController < ApplicationController
     def update
         @entry = current_user.entries.find params[:id]
   		if @entry.update(entries_params)
-   	    	redirect_to edit_entry_path(@entry)
+   	    	redirect_to charttest_path
    	    else 
    			render 'edit'
    		end
     end
     
     def charttest
+        @entries = current_user.entries
         @entry = Entry.new
+        @home_data = []
         @car_data = []
+        @diet_data = []
+        @pie_data = []
     end
     
     def destroy
         entry = current_user.entries.find params[:id]
 	 	entry.destroy
-	 	redirect_to entries_path
+	 	redirect_to charttest_path
     end
     
     private

@@ -1,23 +1,106 @@
-   <ul>Home
-        <li>State: <%= @entry.state %> </li>
-        <li>Number of People: <%= @entry.num_people %> </li>
-        <li>Electricity: <%= @entry.electricity %> kWh </li>
-        <li>Natural Gas: <%= @entry.natural_gas %> therms </li>
-        <li>Heating Oil: <%= @entry.heating_oil %> gal </li>
-    </ul>
-    <ul>Car
-        <li>MPG: <%= @entry.mpg %> </li>
-        <li>Miles Driven: <%= @entry.miles_driven %> </li>
-        <li>Date: <%= @entry.date %></li>
-    </ul>
-    <ul>Food
-        <li>Diet Type: <%= @entry.diet_type %></li>
-    </ul>
-    
-    <p>total month carbon footprint: <%= total_footprint(@entry) %> </p>
-    <p>Home footprint: <%= home_footprint(@entry) %> </p>
-    <p>Car footprint: <%= car_footprint(@entry) %> </p>
-    <p>Diet footprint: <%= diet_footprint(@entry) %> </p>
+                       <div class="on_head">
+                        <h1 class="page-head-line"> Entry: <%= @entry.date.month %> - <%= @entry.date.year %> </h1>
+                        </div>
+                        
+                        <div class="panel-heading">
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <h2>Home</h2>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>State</th>
+                                            <th>Population</th>
+                                            <th>Electricity</th>
+                                            <th>Natural Gas</th>
+                                            <th>Heating Oil</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><%= @entry.state %> </td>
+                                            <td><%= @entry.num_people %> </td>
+                                            <td><%= @entry.electricity %> kWh </td>
+                                            <td><%= @entry.natural_gas %> therms </td>
+                                            <td><%= @entry.heating_oil %> gal </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                        <div class="panel-heading">
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <h2>Car</h2>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>MPG</th>
+                                            <th>Miles/Month</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><%= @entry.mpg %> mpg </td>
+                                            <td><%= @entry.miles_driven %> miles </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="panel-heading">
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <h2>Diet</h2>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Diet</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><%= @entry.diet_type %> </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+   
+               <div class="panel-heading">
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <h2>Footrpint</h2>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Home Footrpint</th>
+                                            <th>Car Footprint</th></th>
+                                            <th>Diet Footprint</th>
+                                            <th>Total Footprint</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><%= home_footprint(@entry).round(2) %></td>
+                                            <td><%= car_footprint(@entry).round(2) %></td>
+                                            <td><%= diet_footprint(@entry).round(2) %></td>
+                                            <td><%= total_footprint(@entry).round(2) %></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
 
     
 <p><%= link_to 'Back', entries_path %></p>

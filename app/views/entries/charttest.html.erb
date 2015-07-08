@@ -1,13 +1,35 @@
 <%= javascript_include_tag "//www.google.com/jsapi" %>
 <%= javascript_include_tag "path/to/highcharts.js", "chartkick" %>
+<%= javascript_include_tag "google.com/jsapi", "chartkick" %>
+ 
+<h1> CHART PAGE </h1>
 
-<h1> testing </h1>
-
-    <% home_data(current_user, @car_data) %>
+    <!-- prep column chart data -->
+    <% home_data(current_user, @home_data) %>
+    <% car_data(current_user, @car_data) %>
+    <% diet_data(current_user, @diet_data) %>
+    <% @data = [ {name: "Home", data: @home_data}, {name: "Car", data: @car_data}, {name: "Diet", data: @diet_data} ] %>
     
-    <% @car_data.each do |datum| %>
-        <%= datum %>
+    <!-- column chart -->
+    <%= column_chart @data, stacked: true %> 
+
+    <!-- pie chart for each month -->
+    <% current_user.entries.each do |entry| %>
+        <!-- pie chart -->
+        <div class="col-md-2">
+            <!-- prep data -->
+            <% month_data(entry, @pie_data) %>
+            <h3><%= entry.date %></h3>
+            <%= pie_chart @pie_data, height: "200px" %>
+            <!-- reset data array -->
+            <% @pie_data = [] %>
+        </div>
     <% end %>
+    
+    
+    
 
-<%= column_chart @car_data %> 
-
+    
+    
+<%= render 'tab_form_final' %>
+    

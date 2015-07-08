@@ -1,0 +1,66 @@
+<%= simple_form_for(@entry) do |f| %>
+
+ <p>
+    <%= f.submit %>
+ </p>
+
+<form id="personal-data" class="form-horizontal" method="POST" action="#">
+
+<div class="tabbable">
+  <ul class="nav nav-tabs">
+    <li>
+      <a href="#1" data-toggle="tab">Date</a>
+    </li>
+    <li>
+      <a href="#2" data-toggle="tab">Home</a>
+    </li>   
+    <li>
+      <a href="#3" data-toggle="tab">Car</a>
+    </li> 
+    <li>
+      <a href="#4" data-toggle="tab">Diet</a>
+    </li> 
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane" id="1">      
+       <form id="personal-data" class="form-horizontal">
+         <p>
+            <%= f.input :date , as: :date, start_year: Date.today.year - 90,  
+                              end_year: Date.today.year, discard_day: true %>
+         </p>
+    </div>
+    <div class="tab-pane" id="2">
+       <p>
+            <%= f.input :state, :collection => ["AK","AL","AR","AZ","CA","CO","CT","DC","DE","FL","GA","GU","HI","IA","ID", "IL","IN","KS","KY","LA","MA","MD","ME","MH","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY", "OH","OK","OR","PA","PR","PW","RI","SC","SD","TN","TX","UT","VA","VI","VT","WA","WI","WV","WY"] %>
+          </p>
+          <p>
+            <%= f.input :num_people %>
+          </p>
+          <p>
+            <%= f.input :electricity %>
+          </p>
+          <p>
+            <%= f.input :natural_gas %>
+          </p>
+           <p>
+            <%= f.input :heating_oil %>
+          </p>
+    </div>      
+    <div class="tab-pane" id="3">
+          <p>
+            <%= f.input :mpg %>
+          </p>
+          <p>
+            <%= f.input :miles_driven %>
+          </p>
+    </div>
+    <div class="tab-pane" id="4">
+       <p>
+         <%= f.input :diet_type, :collection => ["meat_lover", "average", "no_beef", "vegetarian", "vegan"] %>
+       </p>
+    </div>
+  </div>
+</div>
+
+<% end %>
+
