@@ -14,8 +14,10 @@
         <li>Diet Type: <%= @entry.diet_type %></li>
     </ul>
     
-    <p>state electricity efficiency <%= electricity_efficiency(@entry) %> metric tons per kWh</p>
-    <p>diet carbon footprint <%= diet_carbon_footprint(@entry) %> metric tons per month  </p>
     <p>total month carbon footprint: <%= total_footprint(@entry) %> </p>
+    <p>Home footprint: <%= home_footprint(@entry) %> </p>
+    <p>Car footprint: <%= car_footprint(@entry) %> </p>
+    <p>Diet footprint: <%= diet_footprint(@entry) %> </p>
+
     
 <p><%= link_to 'Back', entries_path %></p>

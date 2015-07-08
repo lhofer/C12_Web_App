@@ -3,9 +3,11 @@
 
 <h1> testing </h1>
 
+    <% home_data(current_user, @car_data) %>
+    
+    <% @car_data.each do |datum| %>
+        <%= datum %>
+    <% end %>
 
-<%= column_chart @data, stacked: true %> 
-
-<%= column_chart current_user.entries.group_by_month(:date).sum(:electricity) %>
-
+<%= column_chart @car_data %> 
 
