@@ -1,72 +1,26 @@
-<html>
-<head>
-<meta charset=utf-8 />
-<title>Driving directions</title>
+
 <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-<script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
 <link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
-<style>
-
-#map { 
-    height:600px; 
-    width:auto 
-}
-.container-full {
-    width: auto; 
-}
-</style>
-</head>
-<body>
-<style>
-#control {
-    height:400px;
-    width: 300px;
-}
-#inputs,
-#errors,
-#directions {
-    position: absolute;
-    width: 33.3333%;
-    max-width: 300px;
-    min-width: 200px;
-}
-
-#inputs {
-    z-index: 10;
-    top: 10px;
-    left: 10px;
-}
-
-#directions {
-    z-index: 99;
-    background: rgba(0,0,0,.8);
-    top: 0;
-    right: 0;
-    bottom: 0;
-    overflow: auto;
-    
-}
-
-#errors {
-    z-index: 8;
-    opacity: 0;
-    padding: 10px;
-    border-radius: 0 0 3px 3px;
-    background: rgba(0,0,0,.25);
-    top: 90px;
-    left: 10px;
-}
-
-</style>
-
-<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/mapbox-directions.js/v0.3.0/mapbox.directions.js'></script>
 <link rel='stylesheet' href='https://api.tiles.mapbox.com/mapbox.js/plugins/mapbox-directions.js/v0.3.0/mapbox.directions.css' type='text/css' />
-
+<script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
+<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/mapbox-directions.js/v0.3.0/mapbox.directions.js'></script>
+<style>
+    body {
+        background: rgb(108,167,220);
+    }
+</style>
 <div class="row container-full">
     <div class="col-md-12">
-        <div id='map'></div>
-        <div id='inputs'></div>
-        <div id='errors'></div>
+        <div id='map'>
+            <div class="row">
+                <div class="col-md-3">
+                    <div id='inputs'></div>
+                </div>
+                <div class="col-md-3">
+                    <div id='errors'></div>
+                </div>
+            </div>
+        </div>
         <div id='directions'>
             <div id='routes'></div>
             <div id='instructions'></div>
@@ -86,8 +40,11 @@ map.attributionControl.setPosition('bottomleft');
 // create the initial directions object, from which the layer
 // and inputs will pull data.
 var directions = L.mapbox.directions();
- 
-//directions.destination
+// directions = {
+//     directions: (routes:[].distance}
+// }
+var distance;
+
 
 var directionsLayer = L.mapbox.directions.layer(directions)
     .addTo(map);
@@ -104,17 +61,25 @@ var directionsRoutesControl = L.mapbox.directions.routesControl('routes', direct
 
 var directionsInstructionsControl = L.mapbox.directions.instructionsControl('instructions', directions)
     .addTo(map);
-var distance = directions.routes[0].distance;
+// var distance = directions.routes[0].distance;
 
 function updateWhatever() {
     console.log("i'm changin!");
     $(".mapbox-directions-route").first().append("<p style='color:red'>WOW</p>");
+    // distance.push(directions.directions.routes[0].distance);
+     distance = directions.directions.routes[0].distance;
+
+
     // do whatever to the boxes  
 };
 
 $(function() {
     $("input").change(function() {
         console.log("i'm changin!");
+        // console.log( Object.keys(directions).includes("routes")) 
+
+
+        // debugger;
         $(".mapbox-directions-route").first().append("<p style='color:red'>WOW</p>");
     });
     //$("input").trigger('change')

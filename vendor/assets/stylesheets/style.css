@@ -57,7 +57,7 @@ body {
 .c-wrapper {
     min-height: 600px;
     padding-bottom: 60px;
-    margin: 20px 0px 0px 0px;
+    margin: 20px 0px 40px 0px;
 }
 
 .page-head-line {
@@ -182,6 +182,10 @@ header {
     background-color: #3D3D3D;
 }
 
+#menu-top {
+    color: #FFF;
+}
+
 #menu-top a {
     color: #FFF;
     text-decoration: none;
@@ -224,7 +228,7 @@ footer {
     padding: 10px;
     color: #fff;
     font-size: 12px;
-    background-color: #00A67C;
+    background-color: #3D3D3D;
 }
 
     footer a, footer a:hover {

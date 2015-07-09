@@ -14,6 +14,7 @@
  *= require_tree .
  *= require_self
  *= require style
+ *= require map.css
  */
  .navbar_link {
      background:none!important;
@@ -30,6 +31,10 @@
          text-decoration:underline;
 }
 
+.nav.nav-tabs a {
+    color: black;
+}
+
 .tabbable {
     margin: 40px;
     padding: 20px;
@@ -43,4 +48,8 @@ label{
 }
 .panel-heading {
     padding: 30px;
+}
+
+.panel-body {
+    line-height: 30px;
 }
