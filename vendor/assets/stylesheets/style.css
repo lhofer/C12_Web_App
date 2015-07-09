@@ -23,7 +23,7 @@
 button {
     border-radius: 10px;
 }
-a {
+.menu-top li a {
     color:white;
 }
 a:hover {
