@@ -88,7 +88,7 @@
                                 <h3>Monthly Carbon Footprint (lbs CO2)</h3>
                             </div>
                             <div class="panel-body">
-                                <% if current_user? %>
+                                <% if user_signed_in? %>
                                     <!-- prep column chart data -->
                                     <% home_data(current_user, @home_data) %>
                                     <% car_data(current_user, @car_data) %>
