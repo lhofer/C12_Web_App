@@ -88,14 +88,16 @@
                                 <h3>Monthly Carbon Footprint (lbs CO2)</h3>
                             </div>
                             <div class="panel-body">
-                                <!-- prep column chart data -->
-                                <% home_data(current_user, @home_data) %>
-                                <% car_data(current_user, @car_data) %>
-                                <% diet_data(current_user, @diet_data) %>
-                                <% @data = [ {name: "Home", data: @home_data}, {name: "Car", data: @car_data}, {name: "Diet", data: @diet_data} ] %>
-                                
-                                <!-- column chart -->
-                                <%= column_chart @data, stacked: true %>  
+                                <% if current_user? %>
+                                    <!-- prep column chart data -->
+                                    <% home_data(current_user, @home_data) %>
+                                    <% car_data(current_user, @car_data) %>
+                                    <% diet_data(current_user, @diet_data) %>
+                                    <% @data = [ {name: "Home", data: @home_data}, {name: "Car", data: @car_data}, {name: "Diet", data: @diet_data} ] %>
+                                    
+                                    <!-- column chart -->
+                                    <%= column_chart @data, stacked: true %>  
+                               <% end %>
                             </div>
                         </div>
                     </div>

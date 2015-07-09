@@ -9,6 +9,18 @@
         background: rgb(108,167,220);
     }
 </style>
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Calculate Footprint</button>                    
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">New Entry</h4>
+          </div>
+        </div>
+      </div>
+    </div>
 <div class="row container-full">
     <div class="col-md-12">
         <div id='map'>
@@ -64,19 +76,18 @@ var directionsInstructionsControl = L.mapbox.directions.instructionsControl('ins
 // var distance = directions.routes[0].distance;
 
 function updateWhatever() {
-    console.log("i'm changin!");
+    console.log("i'm testing!");
     $(".mapbox-directions-route").first().append("<p style='color:red'>WOW</p>");
     // distance.push(directions.directions.routes[0].distance);
      distance = directions.directions.routes[0].distance;
+    $('#dialog').dialog('open');
 
 
     // do whatever to the boxes  
 };
 
 $(function() {
-    $(".mapbox-directions-profile").first().append(
-      <span><button type="button">Click Me!</button></span>
-    );
+
     $("input").change(function() {
         console.log("i'm changin!");
         // console.log( Object.keys(directions).includes("routes")) 
@@ -100,9 +111,12 @@ $(function() {
     });
     $("#mapbox-directions-profile-walking").click(updateWhatever); 
     $("#mapbox-directions-profile-walking").click(updateWhatever); 
-    $("#mapbox-directions-profile-walking").click(updateWhatever);    
+    $("#mapbox-directions-profile-walking").click(updateWhatever); 
+    $("#mapbox-directions-profile-driving").click(updateWhatever);    
+
 });
 
 </script>
+<div id="dialog" title="Dialog Title" style="display:none"> Some text</div> 
 </body>
 </html>
