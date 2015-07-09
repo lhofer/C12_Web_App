@@ -1,5 +1,6 @@
 class EntriesController < ApplicationController
     include EntriesHelper
+    before_action :authenticate_user!
 
     def index
         @entries = current_user.entries

@@ -74,6 +74,9 @@ function updateWhatever() {
 };
 
 $(function() {
+    $(".mapbox-directions-profile").first().append(
+      <span><button type="button">Click Me!</button></span>
+    );
     $("input").change(function() {
         console.log("i'm changin!");
         // console.log( Object.keys(directions).includes("routes")) 
