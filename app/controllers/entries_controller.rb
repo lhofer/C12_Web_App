@@ -6,6 +6,7 @@ class EntriesController < ApplicationController
         @entry = Entry.new
         @home_data = []
         @car_data = []
+        @total_footprint = 0
         @diet_data = []
         @average_data = [["home", 0], ["car", 0], ["diet", 0]]    
     end

@@ -19,7 +19,6 @@
             <div class="row">
                 <%= render 'layouts/dashboard'%>
             </div>
-
             <!-- DASHBOARD CONTENT -->
             <div class="row">
                 <!-- HISTORY TABLE -->
@@ -100,8 +99,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- ALERTS -->
-                    <p class="alert alert-success"> Some notice about the user's carbon footprint.</p>
+                    <!-- WARNING ALERTS -->
                     <% @entries.each do |entry| %>
                         <% if !home_data?(entry) || !car_data?(entry) || !entry.diet_type? %>
                             <p class="alert alert-danger">Please enter info for <%= entry.date%> so we can make more accurate calculations for you!</p>

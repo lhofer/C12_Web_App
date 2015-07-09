@@ -27,7 +27,7 @@ gem 'devise'
 
 gem 'gmaps4rails'
 gem 'rest-client'
-
+gem 'jquery-turbolinks'
 
 gem 'simple_form'
 # Use ActiveModel has_secure_password

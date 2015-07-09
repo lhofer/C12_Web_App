@@ -63,7 +63,7 @@ module EntriesHelper
         if entry.diet_type?
             calc_diet_data(entry)
         else 
-           
+            avg_diet_data
         end
     end
 
@@ -72,7 +72,7 @@ module EntriesHelper
         if home_data?(entry) && car_data?(entry) && entry.diet_type?
             home_footprint(entry) + car_footprint(entry) + diet_footprint(entry)
         else
-            "please enter all info for us to accurately calculate your carbon footprint!"
+            0
         end
     end
     

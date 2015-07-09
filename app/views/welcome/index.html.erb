@@ -6,8 +6,14 @@
 <script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
 <link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
 <style>
-  body { margin:0; padding:0; }
-  #map { position:absolute; top:0; bottom:0; width:90%; }
+
+#map { 
+    height:500px; 
+    width:auto 
+}
+.container-full {
+    width: auto; 
+}
 </style>
 </head>
 <body>
@@ -38,6 +44,7 @@
     right: 0;
     bottom: 0;
     overflow: auto;
+    
 }
 
 #errors {
@@ -54,19 +61,19 @@
 
 <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/mapbox-directions.js/v0.3.0/mapbox.directions.js'></script>
 <link rel='stylesheet' href='https://api.tiles.mapbox.com/mapbox.js/plugins/mapbox-directions.js/v0.3.0/mapbox.directions.css' type='text/css' />
-<div>ASDFSDFSDF</div>
 
-<div style="width:500px; height:500px">
-<div id='control'>
-    <div id='map'></div>
-    <div id='inputs'></div>
-    <div id='errors'></div>
-    <div id='directions'>
-      <div id='routes'></div>
-      <div id='instructions'></div>
+<div class="row container-full">
+    <div class="col-md-12">
+        <div id='map'></div>
+        <div id='inputs'></div>
+        <div id='errors'></div>
+        <div id='directions'>
+            <div id='routes'></div>
+            <div id='instructions'></div>
+        </div>
     </div>
 </div>
-</div>
+
 <script>
 L.mapbox.accessToken = 'pk.eyJ1IjoicmtyYWJlayIsImEiOiIzZjBkZDQ2OGJhNmRhYWZhNDdkZmE0YzMwYjkwNDNiYyJ9.4AsJUOjYe0gfKMrSjtb0Ww';
 var map = L.mapbox.map('map', 'mapbox.streets', {
@@ -79,7 +86,7 @@ map.attributionControl.setPosition('bottomleft');
 // create the initial directions object, from which the layer
 // and inputs will pull data.
 var directions = L.mapbox.directions();
-
+var distance = directions.routes[0].distance;
 //directions.destination
 
 var directionsLayer = L.mapbox.directions.layer(directions)
