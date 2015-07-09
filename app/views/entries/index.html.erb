@@ -3,7 +3,7 @@
 <%= javascript_include_tag "google.com/jsapi", "chartkick" %>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-    
+<div class = "container"   
     <!-- DASHBOARD HEADER -->
     <div class="content-wrapper">
         <div class="container">
@@ -17,7 +17,7 @@
             
             <!-- RENDER DASHBOARD BOXES -->
             <div class="row">
-                <%= render 'dashboard'%>
+                <%= render 'layouts/dashboard'%>
             </div>
 
             <!-- DASHBOARD CONTENT -->
@@ -43,12 +43,20 @@
                                                 <tr>
                                                     <td><%= entry.date.month %> - <%= entry.date.year %></td>
                                                     <% if home_data?(entry) && car_data?(entry) && entry.diet_type? %>
-                                                        <td><a href= "/entries/<%=entry.id.to_s%>/edit" class="btn btn-info btn-xs">OK, edit</a></td>
+                                                        <td>
+                                                            <%= link_to 'OK, Edit', edit_entry_path(entry), :class => "btn btn-info btn-xs" %>
+                                                        </td>
                                                     <% else %>
                                                         <td><a href= "/entries/<%=entry.id.to_s%>/edit" class="btn btn-warning btn-xs">Info needed</a></td>
                                                     <% end %>
                                                     <td><a href= "/entries/<%=entry.id.to_s%>" class="btn btn-success btn-xs">View</a></td>
-                                                    <td><a href= "/charttest" class="btn btn-danger btn-xs">Delete</a></p></td>
+                    
+                                                    <td><%= button_to 'Delete', [entry],
+                    				method: :delete,
+                    				data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %></a></td>
+
+                    
+
                                                 <% end %>
                                                 </tr>
                                         </tbody>
@@ -56,12 +64,23 @@
                                 </div>
                             </div>
                             <div class="panel-footer">
-                                <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">New Entry</button>
+                                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">New Entry</button>                    
+                                <!-- Modal -->
+                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                  <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">New Entry</h4>
+                                      </div>
+                                        <%= render 'tab_form_final' %>
+                                    </div>
+                                  </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
                 <!-- GRAPH -->
                 <div class="col-md-8">
                     <div class="notice-board">
@@ -94,4 +113,4 @@
             </div>                      
         </div>
     </div>
-</body>
+</div>

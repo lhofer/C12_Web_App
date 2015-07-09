@@ -1,66 +1,122 @@
-<%= simple_form_for(@entry) do |f| %>
-
- <p>
-    <%= f.submit %>
- </p>
-
-<form id="personal-data" class="form-horizontal" method="POST" action="#">
-
-<div class="tabbable">
-  <ul class="nav nav-tabs">
-    <li>
-      <a href="#1" data-toggle="tab">Date</a>
-    </li>
-    <li>
-      <a href="#2" data-toggle="tab">Home</a>
-    </li>   
-    <li>
-      <a href="#3" data-toggle="tab">Car</a>
-    </li> 
-    <li>
-      <a href="#4" data-toggle="tab">Diet</a>
-    </li> 
-  </ul>
-  <div class="tab-content">
-    <div class="tab-pane" id="1">      
-       <form id="personal-data" class="form-horizontal">
-         <p>
-            <%= f.input :date , as: :date, start_year: Date.today.year - 90,  
-                              end_year: Date.today.year, discard_day: true %>
-         </p>
-    </div>
-    <div class="tab-pane" id="2">
-       <p>
-            <%= f.input :state, :collection => ["AK","AL","AR","AZ","CA","CO","CT","DC","DE","FL","GA","GU","HI","IA","ID", "IL","IN","KS","KY","LA","MA","MD","ME","MH","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY", "OH","OK","OR","PA","PR","PW","RI","SC","SD","TN","TX","UT","VA","VI","VT","WA","WI","WV","WY"] %>
-          </p>
-          <p>
-            <%= f.input :num_people %>
-          </p>
-          <p>
-            <%= f.input :electricity %>
-          </p>
-          <p>
-            <%= f.input :natural_gas %>
-          </p>
-           <p>
-            <%= f.input :heating_oil %>
-          </p>
-    </div>      
-    <div class="tab-pane" id="3">
-          <p>
-            <%= f.input :mpg %>
-          </p>
-          <p>
-            <%= f.input :miles_driven %>
-          </p>
-    </div>
-    <div class="tab-pane" id="4">
-       <p>
-         <%= f.input :diet_type, :collection => ["meat_lover", "average", "no_beef", "vegetarian", "vegan"] %>
-       </p>
-    </div>
-  </div>
-</div>
-
+<% if @entry.errors.any? %>
+		<div id="error_explanation" >
+			<h3>
+				<%= pluralize(@entry.errors.count, "error") %> prohibited this entry from being saved: </h3>
+			<ul>
+				<% @entry.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+				    <% end %>
+			   </ul>
+		</div>
 <% end %>
 
+<%= simple_form_for(@entry) do |f| %>
+        <div class="tabbable">
+            <ul class="nav nav-tabs">
+                <li>
+                  <a href="#1" data-toggle="tab">Date</a>
+                </li>
+                <li>
+                    <a href="#2" data-toggle="tab">Home</a>
+                </li>   
+                <li>
+                    <a href="#3" data-toggle="tab">Car</a>
+                </li> 
+                <li>
+                    <a href="#4" data-toggle="tab">Diet</a>
+                </li> 
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane" id="1">      
+                    <form id="personal-data" class="form-horizontal">
+                    <div class = "modal_body">
+                        <div class="row">
+                            <div class="col-med-offset-3 col-md-6">
+                                <p>
+                                  <%= f.input :date , as: :date, start_year: Date.today.year - 90, end_year: Date.today.year, discard_day: true, 
+                                  :label_html => { :class => 'text-right' }, :input_html=> { :class => "form-control" } %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="2">
+                     <div class = "modal_body">
+                        <div class="row">
+                            <div class="col-med-offset-3 col-md-6">
+                                <p>
+                                    <%= f.input :state, :label_html => { :class => 'text-right' }, :input_html=> { :class => "form-control" },
+                                    :collection => ["AK","AL","AR","AZ","CA","CO","CT","DC","DE","FL","GA","GU","HI","IA","ID", "IL","IN","KS","KY","LA","MA","MD","ME","MH","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY", "OH","OK","OR","PA","PR","PW","RI","SC","SD","TN","TX","UT","VA","VI","VT","WA","WI","WV","WY"] %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class = "modal_body">
+                          <div class="row">
+                            <div class="col-med-offset-3 col-md-6">
+                              <p><%= f.input :num_people, :label_html => { :class => 'text-right' }, :input_html=> { :class => "form-control" } %></p>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class = "modal_body">
+                          <div class="row">
+                            <div class="col-med-offset-3 col-md-6">
+                             <p><%= f.input :electricity, :label_html => { :class => 'text-right' }, :input_html=> { :class => "form-control" } %></p>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class = "modal_body">
+                          <div class="row">
+                            <div class="col-med-offset-3 col-md-6">
+                             <p><%= f.input :natural_gas, :label_html => { :class => 'text-right' }, :input_html=> { :class => "form-control" } %></p>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class = "modal_body">
+                          <div class="row">
+                            <div class="col-med-offset-3 col-md-6">
+                             <p><%= f.input :heating_oil, :label_html => { :class => 'text-right' }, :input_html=> { :class => "form-control" } %></p>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>      
+            <div class="tab-pane" id="3">
+                <div class = "modal_body">
+                    <div class="row">
+                        <div class="col-med-offset-3 col-md-6">
+                            <p><%= f.input :mpg, :label_html => { :class => 'text-right' }, :input_html=> { :class => "form-control" } %></p>
+                        </div>
+                    </div>
+                </div>
+                <div class = "modal_body">
+                    <div class="row">
+                        <div class="col-med-offset-3 col-md-6">                    
+                            <p><%= f.input :miles_driven, :label_html => { :class => 'text-right' }, :input_html=> { :class => "form-control" } %></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="4">
+                <div class = "modal_body">
+                    <div class="row">
+                        <div class="col-med-offset-3 col-md-6">
+                           <p><%= f.input :diet_type, :label_html => { :class => 'text-right' }, :input_html=> { :class => "form-control" },
+                               :collection => ["meat_lover", "average", "no_beef", "vegetarian", "vegan"] %></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                   <%= f.submit :class => "btn btn-success" %>
+                </div>    
+            </div>
+        </div>
+<% end %>

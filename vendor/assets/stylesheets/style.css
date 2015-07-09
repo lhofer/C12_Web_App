@@ -34,7 +34,7 @@ a:hover {
     margin: 0 auto;
 }
 .page-head-line {
-    margin: 30px 80px 0px 80px;
+    /*margin: 30px 80px 0px 80px;*/
 }
 
 body {
@@ -51,7 +51,13 @@ body {
 .content-wrapper {
     min-height: 600px;
     padding-bottom: 60px;
-    margin: 0px 90px 0px 80px;
+    /*margin: 0px 90px 0px 80px;*/
+}
+
+.c-wrapper {
+    min-height: 600px;
+    padding-bottom: 60px;
+    margin: 20px 0px 0px 0px;
 }
 
 .page-head-line {
@@ -233,7 +239,7 @@ footer {
 /* DASHBOARD ICONS */
 
 .bk-clr-one {
-    background-color: #B9B739;
+    background-color: #FFCC00;
 }
 
 .bk-clr-two {

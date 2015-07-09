@@ -29,3 +29,22 @@
 .navbar_link:hover{
          text-decoration:underline;
 }
+
+.tabbable {
+    margin: 40px;
+    padding: 20px;
+}
+
+.btn btn-warning {
+    border-radius: 10px;
+}
+
+.row {
+    margin: 20px;
+}
+label{
+    margin: 10px;
+}
+.panel-heading {
+    padding: 30px;
+}

@@ -29,13 +29,12 @@ class EntriesController < ApplicationController
     
     def edit
         @entry = current_user.entries.find params[:id]
-        render 'edit'
     end
     
     def update
         @entry = current_user.entries.find params[:id]
   		if @entry.update(entries_params)
-   	    	redirect_to charttest_path
+   	    	redirect_to entries_path
    	    else 
    			render 'edit'
    		end

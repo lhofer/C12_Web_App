@@ -1,17 +1,15 @@
 class WelcomeController < ApplicationController
     def index
-        distance_matrix = JSON.load(RestClient.get("https://maps.googleapis.com/maps/api/distancematrix/json?origins=#{params[:origin]}&destinations=#{params[:destination]}&mode=driving&language=en-EN&key=AIzaSyASWK9aumUuPhwdlez2QDOpGQyeEnc9ZbY"))
-        if distance_matrix["rows"][0]
-            @distance = distance_matrix["rows"][0]["elements"][0]["distance"]["value"]
-            @km = distance_matrix["rows"][0]["elements"][0]["distance"]["text"]
-            @carbon_load = ((@distance*1.61) / 36) *19.64
-        end
+        @distance_matrix = RestClient.get("https://maps.googleapis.com/maps/api/distancematrix/json?origins=#{params[:origin]}&destinations=#{params[:destination]}&mode=driving&language=en-EN&key=AIzaSyASWK9aumUuPhwdlez2QDOpGQyeEnc9ZbY")
+        @distance_matrix2 = RestClient.get("https://maps.googleapis.com/maps/api/distancematrix/json?origins=toronto&destinations=montreal&mode=driving&language=en-EN&key=AIzaSyASWK9aumUuPhwdlez2QDOpGQyeEnc9ZbY")
     end
     
     def about
-
     end
     
     def contact
+    end
+    
+    def start
     end
 end
