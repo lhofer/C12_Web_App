@@ -32,3 +32,23 @@ To watch some training videos, visit http://www.youtube.com/user/c9ide
     csv.each do |row|
       StateElectricity.create!(row.to_hash)
     end
+
+##TODO
+1. scroll through history, only display top 5-10
+2. new entry
+    a. new entry modul
+    b. take out of dashboard
+3. edit entry
+    a. edit modul
+    b. make sure it works
+4. tabs with modul?
+5. Dashboard
+    a. get started
+    b. more stats
+    c. contact in footer...
+6. Nav bar
+    a. about use
+7. Bootstrap
+    a. sign in sign out
+8. Map: get to work...
+9. Graphs: change graph
