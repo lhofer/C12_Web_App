@@ -1,3 +1,4 @@
+
 /*=============================================================
     Authour URL: www.designbootstrap.com
     
@@ -19,10 +20,26 @@
  ============================================================ */
 
 @import url(http://fonts.googleapis.com/css?family=Roboto); /* FREE GOOGLE FONT */
+button {
+    border-radius: 10px;
+}
+a {
+    color:white;
+}
+a:hover {
+    color:#323232;
+}
+
+.table-responsive {
+    margin: 0 auto;
+}
+.page-head-line {
+    margin: 30px 80px 0px 80px;
+}
 
 body {
     font-family: 'Roboto', sans-serif;
-    line-height: 30px;
+    line-height: 0px;
 }
 
 .set-radius-zero {
@@ -32,17 +49,17 @@ body {
 }
 
 .content-wrapper {
-    margin-top: 40px;
     min-height: 600px;
     padding-bottom: 60px;
+    margin: 0px 90px 0px 80px;
 }
 
 .page-head-line {
     font-weight: 900;
     padding-bottom: 20px;
-    border-bottom: 2px solid #F0677C;
+    border-bottom: 2px solid #00CC99;
     text-transform: uppercase;
-    color: #F0677C;
+    color: #00CC99;
     font-size: 20px;
     margin-bottom: 40px;
 }
@@ -69,7 +86,7 @@ margin-bottom: 20px;
 color: #fff;
 text-align: center;
 cursor:pointer;
-background-color:#F0677C;
+background-color:#00CC99;
 -webkit-border-radius:50%;
     -moz-border-radius:50%;
 }
@@ -77,7 +94,7 @@ background-color:#F0677C;
    HEADER SECTION STYLES
  ============================================================ */
 header {
-    background-color: #006699;
+    background-color: #00CC99;
     color: #fff;
     padding: 10px;
     text-align: right;
@@ -108,7 +125,7 @@ header {
     -moz-border-radius: 50%;
     height: 60px;
     width: 60px;
-    background-color: #F0677C;
+    background-color: #00CC99;
     color: #fff;
 }
 
@@ -127,7 +144,7 @@ header {
 
     .user-settings-wrapper .nav > li > a:hover,.user-settings-wrapper .nav > li > a:focus {
         text-decoration: none;
-        background-color: #C36464!important;
+        background-color: #00A67C!important;
     }
 
     .user-settings-wrapper img {
@@ -168,30 +185,32 @@ header {
 }
 
 .menu-top-active {
-    background-color: #C36464;
+    background-color: #00A67C;
 }
 
 .menu-section .nav > li > a:hover,.menu-section .nav > li > a:focus {
-    background-color: #F0677C!important;
+    background-color: #00CC99!important;
 }
 
 .menu-section .dropdown-menu > li > a:hover,.menu-section .dropdown-menu > li > a:focus {
-    background-color: #F0677C!important;
+    background-color: #00CC99!important;
 }
 
 .navbar-inverse {
-    background-color: #C36464;
+    background-color: #00A67C;
     border-color: transparent;
 }
 
 .navbar-toggle {
-    background-color: #F0677C;
+    background-color: #00CC99;
     border: 1px solid #fff;
 }
 
 .navbar {
     margin-bottom: 0px;
 }
+
+
 /* =============================================================
    FOOTER SECTION STYLES
  ============================================================ */
@@ -199,7 +218,7 @@ footer {
     padding: 10px;
     color: #fff;
     font-size: 12px;
-    background-color: #C36464;
+    background-color: #00A67C;
 }
 
     footer a, footer a:hover {
@@ -248,6 +267,7 @@ footer {
     padding: 15px;
     color: #fff;
     margin-bottom: 50px;
+
 }
 
     .dashboard-div-wrapper .progress {
@@ -266,6 +286,7 @@ footer {
 .notice-board ul {
     padding-left: 0px;
     list-style: none;
+
 }
 
 .notice-board li {

@@ -1,0 +1,42 @@
+    <!-- pie chart for each month -->
+    <% current_user.entries.each do |entry| %>
+        <!-- pie chart -->
+        <div class="col-md-2">
+            <!-- prep data -->
+            <% month_data(entry, @pie_data, @all_pie_data) %>
+            <h3><%= entry.date %></h3>
+            <%= pie_chart @pie_data, height: "200px" %>
+            <!-- reset data array -->
+            <% @pie_data = [] %>
+        </div>
+    <% end %>
+    
+    
+     def month_data(entry, array, all_array)
+      #HOME
+        if entry.electricity? && entry.natural_gas? && entry.heating_oil
+            array << ["Home", home_footprint(entry)]
+            all_array[0][1]=all_array[0][1] + home_footprint(entry)
+        else
+            # US average kWh*lbs_CO2/kWh + therms*lbs_CO2/therm + gal*lbs_CO2/gal (from carbonfund.org)
+            array << ["Home", (4401/12*1.23)+(311/12*11.02)+(284/12*22.37)]
+            all_array[0][1]=all_array[0][1] + (4401/12*1.23)+(311/12*11.02)+(284/12*22.37)
+        end
+      #CAR
+        if entry.miles_driven && entry.mpg
+            array << ["Car", car_footprint(entry)]
+            all_array[1][1]=all_array[1][1] + car_footprint(entry)
+        else
+            # US average ((miles/licensed_driver) / (miles/gal))*lbs_CO2/gal (from fhwa.dot.gov)
+            array << ["Car", (14425/16.95)*8.19]
+            all_array[1][1]=all_array[1][1] + (14425/16.95)*8.19
+        end
+      #DIET    
+        if entry.diet_type?
+            array << ["Diet", diet_footprint(entry)*2204.62]
+            all_array[2][1]=all_array[2][1] + diet_footprint(entry)*2204.62
+        else
+            array << ["Diet", ((DietCarbon.find_by diet: "average").carbon)*2204.62/12]
+            all_array[2][1]=all_array[2][1] + ((DietCarbon.find_by diet: "average").carbon)*2204.62/12
+        end
+    end

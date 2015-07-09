@@ -4,27 +4,41 @@
  
 <h1> CHART PAGE </h1>
 
+
     <!-- prep column chart data -->
     <% home_data(current_user, @home_data) %>
     <% car_data(current_user, @car_data) %>
     <% diet_data(current_user, @diet_data) %>
     <% @data = [ {name: "Home", data: @home_data}, {name: "Car", data: @car_data}, {name: "Diet", data: @diet_data} ] %>
     
-    <!-- column chart -->
-    <%= column_chart @data, stacked: true %> 
+    <%= column_chart @home_data_change %> 
 
-    <!-- pie chart for each month -->
-    <% current_user.entries.each do |entry| %>
-        <!-- pie chart -->
-        <div class="col-md-2">
-            <!-- prep data -->
-            <% month_data(entry, @pie_data) %>
-            <h3><%= entry.date %></h3>
-            <%= pie_chart @pie_data, height: "200px" %>
-            <!-- reset data array -->
-            <% @pie_data = [] %>
+    <!-- column chart -->
+    <h3>Your Monthly Footprint</h3>
+    <h4>lbs CO2</h4>
+    <%= column_chart @data, stacked: true %> 
+    
+    <div class=row >
+        <div class="col-med-3" >
+            <h3>Your Footprint Breakdown</h3>
+            <h5>Over the past 12 months</h5>
+            <% @entries.sort_by{|t| - t.created_at.to_i}.first(10).each do |entry| %> 
+                <% all_data(entry, @pie_data) %>
+            <% end %>
+            
+            <%= pie_chart @pie_data %>
         </div>
-    <% end %>
+        
+        <div class="col-med-3">
+            <h3>Average Anual Footprint Breakdown</h3>
+            <h5>In the United States</h5>
+            <% average_data(@average_data) %>
+            <%= pie_chart @average_data %>
+        </div>
+    </div>
+    
+    
+    
     
     
     

@@ -1,5 +1,3 @@
-<p><%= @quad %></p>
-
 <html>
 <head>
 <meta charset=utf-8 />
@@ -8,8 +6,8 @@
 <script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
 <link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
 <style>
-  body { margin:10; padding:0; }
-  #map { position:absolute; top:10; bottom:0; width:100%; }
+  body { margin:0; padding:0; }
+  #map { position:absolute; top:0; bottom:0; width:100%; }
 </style>
 </head>
 <body>
@@ -61,7 +59,7 @@
   <div id='instructions'></div>
 </div>
 <script>
-L.mapbox.accessToken = 'pk.eyJ1IjoicmtyYWJlayIsImEiOiJlYzlkOTE5NWE1MzRkOWM0MmZiYWY1ZmEzMzkxMDFiYiJ9.2bxY5vL9PlSbA5TVTwI9pw';
+L.mapbox.accessToken = 'pk.eyJ1IjoicmtyYWJlayIsImEiOiIzZjBkZDQ2OGJhNmRhYWZhNDdkZmE0YzMwYjkwNDNiYyJ9.4AsJUOjYe0gfKMrSjtb0Ww';
 var map = L.mapbox.map('map', 'mapbox.streets', {
     zoomControl: false
 }).setView([40, -74.50], 9);

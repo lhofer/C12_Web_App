@@ -10,6 +10,12 @@ Rails.application.routes.draw do
    root 'welcome#index'
 
    get 'charttest' => 'entries#charttest'
+   
+   get 'about' => 'welcome#about'
+   
+   get 'contact' => 'welcome#contact'
+   
+   post '/' => 'welcome#index'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

@@ -1,0 +1,11 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<p>
+<%= form_tag({controller: "welcome", action:"index"}, method: "post", class: "generic_form") do %>
+  <p><%= label_tag(:origin, "Origin:") %>
+  <%= text_field_tag(:origin) %></p>
+  <p><%= label_tag(:destination, "Destination:") %>
+  <%= text_field_tag(:destination) %></p>
+  <%= submit_tag("Calculate") %>
+<% end %>
+</p>
