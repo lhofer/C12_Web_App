@@ -43,6 +43,9 @@
 .row {
     margin: 20px;
 }
+.row container-full {
+    margin: 0px !important;
+}
 label{
     margin: 10px;
 }

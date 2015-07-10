@@ -44,7 +44,9 @@ gem 'groupdate'
 
 # twitter bootstrap
 gem 'twitter-bootstrap-rails'
- 
+
+# rails_12factor
+gem 'rails_12factor'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

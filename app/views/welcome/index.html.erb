@@ -12,7 +12,7 @@
     .panel-body {
         padding: 0px !important;
     }
-    .row container-full {
+    .container-full {
         margin: 0px !important;
     }
 </style>
@@ -32,21 +32,22 @@
  
     <!-- HISTORY TABLE -->
     <div class="col-md-12">
-        <div class="notice-board">
+    <!--    <div class="notice-board">-->
             <div class="panel panel-default">
-                <div class="panel-heading"><h3>Maps</h3></div>
-                    <div class="panel-body">
-                        <div class="modal fade" id="footprintModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                          <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="myModalLabel"><span id="modal_distance"></span></h4>
-                              </div>
-                            </div>
+                <div class="panel-heading">
+                    <h3>Maps</h3>
+                </div>
+                    <div class="modal fade" id="footprintModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel"><span id="modal_distance"></span></h4>
                           </div>
                         </div>
-                    <div class="row container-full">
+                      </div>
+                    </div>
+                    <div class="container-full">
                         <div id='map'>
                             <div id='inputs'></div>
                             <div id='errors'></div>
@@ -58,7 +59,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+<!--               </div>-->
             </div>
         </div>
     </div>
@@ -91,6 +92,14 @@ function calcDistanceCarbon(){
         carbon_load.push(Math.round(((meters*0.000621371)/25.5)*19.64));
     });
 }
+function triggerModal(){
+        calcDistanceCarbon();
+        $("#modal_distance").html("<p>At the US average of 25.5mpg:</p>")
+        carbon_load.forEach(function(lbs, i){
+            $("#modal_distance").append("<p>Route " + (i+1) + " CO2 emissions: " + lbs + " lbs</p>");
+        });
+        $("#footprintModal").modal()
+}
 
 
 var directionsLayer = L.mapbox.directions.layer(directions)
@@ -121,40 +130,22 @@ function updateWhatever() {
 };
 
 $(function() {
-
-    $("input").change(function() {
-        console.log("i'm changin!");
-        // console.log( Object.keys(directions).includes("routes")) 
-
-        $(".mapbox-directions-route").first().append("<p style='color:red'>WOW</p>");
-        // distance = directions.directions.routes[0].distance;
-    // $("#modal_distance").html("<p>" + distance + "</p>");
-    });
+    // if you want to trigger something on change of input use this
+    // $("input").change(function() {
+    // });
     //$("input").trigger('change')
-    
-    // $("#mapbox-directions-profile-walking").click(function() { alert("HELLO"); });
-    $("#directions").change(function() {
-        console.log("HAIIIII. Dis changed");
-    });
-    $("input").change();
-    
+
     $(".mapbox-directions-inputs form").keypress(function(event) { 
         if (event.keyCode === 13) {
+            if($('#radio_button').is(':checked'))
             updateWhatever();
         } 
     });
     $("#mapbox-directions-profile-walking").click(updateWhatever); 
+    $("#mapbox-directions-profile-cycling").click(updateWhatever);
     $("#mapbox-directions-profile-driving").click(function () {
-        calcDistanceCarbon();
-        // distance = directions.directions.routes[0].distance;
-        $("#modal_distance").html("<p>At the US average of 25.5mpg:</p>")
-        carbon_load.forEach(function(lbs, i){
-            $("#modal_distance").append("<p>Route " + (i+1) + " CO2 emissions: " + lbs + " lbs</p>");
-        });
-        $("#footprintModal").modal()
+        triggerModal();
     });
-    $("#mapbox-directions-profile-cycling").click(updateWhatever);   
-
 });
 
 </script>
