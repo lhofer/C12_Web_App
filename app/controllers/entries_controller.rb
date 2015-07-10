@@ -23,7 +23,7 @@ class EntriesController < ApplicationController
     def create
         @entry = current_user.entries.create(entries_params)
         if @entry.save
-            redirect_to charttest_path
+            redirect_to entries_path
         else 
             render 'new'
         end
