@@ -6,18 +6,16 @@
                 <div class="col-md-12">
                     <div class="navbar-collapse collapse ">
                         <ul id="menu-top" class="nav navbar-nav navbar-left">  
-                            <% if user_signed_in? %>
-                                <li><a>Logged in as <strong><%= current_user.email %></strong></a></li>
-                                <li><%= link_to "Logout", destroy_user_session_path, method: :delete%></li>
-                            <% end %>
+                            <li><div class = 'company_title'>C-12| <small>Know your footprint.</small></div></li>
                         </ul>
 
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
                             <li><a href="/entries">Dashboard</a></li>
+                            <li><a href="/">Maps</a></li>
                             <li><a href="/about">About Us</a></li>
                             <li><a href="/contact">Contact</a></li>
                             <% if user_signed_in? %>
-                                <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
+                                <li><%= link_to "Logout", destroy_user_session_path, method: :delete%></li>
                             <% else %>
                                 <li><%= link_to "Sign up", new_user_registration_path %></li>
                                 <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></li>

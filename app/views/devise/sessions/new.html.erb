@@ -1,15 +1,15 @@
 <!--SIGN UP -->
 
 <div class = "container">
+    <div class="row">
+        <div class="col-md-12">
+            <h4 class="page-head-line">Welcome to C-12</h4>
+        </div>
+    </div>
+    
     <!-- RENDER DASHBOARD BOXES -->
     <div class="row">
         <%= render 'layouts/dashboard'%>
-    </div>
-    
-    <div class="row">
-        <div class="col-md-12">
-            <h4 class="page-head-line">Dashboard</h4>
-        </div>
     </div>
     
     <div class="conatiner">
@@ -51,18 +51,19 @@
                                 <%= f.button :submit, "Log in", 
                                 :label_html => { :class => 'text-right' }, :input_html=> { :class => "form-control" } %>
                               </div>
-                        <% end %>
+                            <% end %>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="notice-board">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3>Average Anual Footprint Breakdown</h3>
-                            <h5>In the United States</h5>
+                <div class="col-md-6">
+                    <div class="notice-board">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3>Average Individual Carbon Footprint</h3>
+                                <h5>lbs CO2 per person on average in the United States</h5>
+                            </div>
+                               <%= pie_chart [["Home", avg_home_data.round(0)], ["Car", avg_car_data.round(0)], ["Diet", avg_diet_data.round(0)]] %>
                         </div>
-                           <%= pie_chart [["Home", avg_home_data.round(0)], ["Car", avg_car_data.round(0)], ["Diet", avg_diet_data.round(0)]] %>
                     </div>
                 </div>
             </div>

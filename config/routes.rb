@@ -15,7 +15,7 @@ Rails.application.routes.draw do
    
    get 'contact' => 'welcome#contact'
    
-   post '/' => 'welcome#index'
+   get 'map' => 'welcome#index'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

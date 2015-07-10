@@ -1,6 +1,7 @@
 module EntriesHelper
 
 #-------------------FOOTPRINT CALCULATIONS-------------------#    
+    
     # check if fields exit
     def home_data?(entry)
         entry.electricity? && entry.natural_gas? && entry.heating_oil?
