@@ -1,7 +1,3 @@
-<%= javascript_include_tag "//www.google.com/jsapi" %>
-<%= javascript_include_tag "path/to/highcharts.js", "chartkick" %>
-<%= javascript_include_tag "google.com/jsapi", "chartkick" %>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <div class = "container"   
     <!-- DASHBOARD HEADER -->
@@ -39,25 +35,22 @@
                                         </thead>
                                         <tbody>
                                             <% @entries.each do |entry| %>
-                                                <tr>
-                                                    <td><%= entry.date.month %> - <%= entry.date.year %></td>
-                                                    <% if home_data?(entry) && car_data?(entry) && entry.diet_type? %>
-                                                        <td>
-                                                            <%= link_to 'OK, Edit', edit_entry_path(entry), :class => "btn btn-info btn-xs" %>
-                                                        </td>
-                                                    <% else %>
-                                                        <td><a href= "/entries/<%=entry.id.to_s%>/edit" class="btn btn-warning btn-xs">Info needed</a></td>
-                                                    <% end %>
-                                                    <td><a href= "/entries/<%=entry.id.to_s%>" class="btn btn-success btn-xs">View</a></td>
-                    
-                                                    <td><%= button_to 'Delete', [entry],
-                    				method: :delete,
-                    				data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %></a></td>
-
-                    
-
+                                            <tr>
+                                                <td><%= entry.date.month %> - <%= entry.date.year %></td>
+                                                <% if home_data?(entry) && car_data?(entry) && entry.diet_type? %>
+                                                    <td>
+                                                        <%= link_to 'OK, Edit', edit_entry_path(entry), :class => "btn btn-info btn-xs" %>
+                                                    </td>
+                                                <% else %>
+                                                    <td><a href= "/entries/<%=entry.id.to_s%>/edit" class="btn btn-warning btn-xs">Info needed</a></td>
                                                 <% end %>
-                                                </tr>
+                                                <td><a href= "/entries/<%=entry.id.to_s%>" class="btn btn-success btn-xs">View</a></td>
+                
+                                                <td><%= button_to 'Delete', [entry],
+                				                    method: :delete,
+                				                    data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %></a></td>
+                                            <% end %>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -93,7 +86,7 @@
                                     <% home_data(current_user, @home_data) %>
                                     <% car_data(current_user, @car_data) %>
                                     <% diet_data(current_user, @diet_data) %>
-                                    <% @data = [ {name: "Home", data: @home_data}, {name: "Car", data: @car_data}, {name: "Diet", data: @diet_data} ] %>
+                                    <% @data = [ {name: "Home", data: @home_data}, {name: "Car", data: @car_data}, {name: "Diet", data: @diet_data} ].reverse! %>
                                     
                                     <!-- column chart -->
                                     <%= column_chart @data, stacked: true %>  

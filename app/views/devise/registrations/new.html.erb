@@ -48,30 +48,20 @@
                                   </div>
                               </div>
                               
-                              <div class="form-actions">
-                                  <div class="row">
-                                      <%= f.button :submit, "Sign up", 
-                                      :label_html => { :class => 'text-right' }, :input_html=> { :class => "form-control" } %>
-                                  </div>
-                              </div>
-                              <div class="row">
-                                  <%= render "devise/shared/links" %>
-                              </div>
+                                <div class="form-actions">
+                                    <div class="row">
+                                        <div class="col-med-offset-3 col-md-6">
+                                            <%= f.button :submit, "Sign up", :class  => "btn btn-success",
+                                            :label_html => { :class => 'text-right' }, :input_html=> { :class => "form-control" } %>
+                                        </div>
+                                    </div>
+                                </div>
+
                             <% end %>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="notice-board">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3>Average Individual Carbon Footprint</h3>
-                                <h5>lbs CO2 per person on average in the United States</h5>
-                            </div>
-                               <%= pie_chart [["Home", avg_home_data.round(0)], ["Car", avg_car_data.round(0)], ["Diet", avg_diet_data.round(0)]] %>
-                        </div>
-                    </div>
-                </div>
+                <%= render 'layouts/avg_pie_chart' %>
             </div>
         </div>
     </div>

@@ -15,63 +15,63 @@ module EntriesHelper
     
     # calculate value of fields
     def calc_home_data(entry)
-        entry.electricity*electricity_efficiency(entry) + 
+        (entry.electricity*electricity_efficiency(entry) + 
         entry.natural_gas*11.02 + 
-	    entry.heating_oil*22.37
+	    entry.heating_oil*22.37).round(2)
 	end
 	
 	def calc_car_data(entry)
-	    (entry.miles_driven/entry.mpg)*19.64
+	    ((entry.miles_driven/entry.mpg)*19.64).round(2)
     end
     
     def calc_diet_data(entry)
-        (((DietCarbon.find_by diet: entry.diet_type).carbon)/12)*2204.62
+        ((((DietCarbon.find_by diet: entry.diet_type).carbon)/12)*2204.62).round(2)
     end
 	
 	# calculate average more
 	def avg_home_data
-	    (4401/12*1.23)+(311/12*11.02)+(284/12*22.37)
+	    ((4401/12*1.23)+(311/12*11.02)+(284/12*22.37)).round(2)
 	end
 	
 	def avg_car_data
-	    ((14425/12) / 16.95) * 19.64  
+	    (((14425/12) / 16.95) * 19.64).round(2)
 	end
 	
 	def avg_diet_data
-	    ((DietCarbon.find_by diet: "average").carbon)/12*2204.62
+	    (((DietCarbon.find_by diet: "average").carbon)/12*2204.62).round(2)
 	end
     
     # Home Footprint Calculation
     def home_footprint(entry)
         if home_data?(entry)
-            calc_home_data(entry)
+            calc_home_data(entry).round(2)
         else
-            avg_home_data
+            avg_home_data.round(2)
         end
     end
     
     # Car Footprint Calculation    
     def car_footprint(entry)
         if car_data?(entry)
-            calc_car_data(entry)
+            calc_car_data(entry).round(2)
         else
-            avg_car_data    
+            avg_car_data.round(2)    
         end
     end
     
     # Diet Footprint Calculation
     def  diet_footprint(entry)
         if entry.diet_type?
-            calc_diet_data(entry)
+            calc_diet_data(entry).round(2)
         else 
-            avg_diet_data
+            avg_diet_data.round(2)
         end
     end
 
     # Total Footprint Calculation
     def total_footprint(entry)
         if home_data?(entry) && car_data?(entry) && entry.diet_type?
-            home_footprint(entry) + car_footprint(entry) + diet_footprint(entry)
+            home_footprint(entry) + car_footprint(entry) + diet_footprint(entry).round(2)
         else
             0
         end

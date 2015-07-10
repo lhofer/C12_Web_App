@@ -16,5 +16,6 @@
 //= require chartkick
 //= require twitter/bootstrap
 //= require turbolinks
+//= require carbon_map
 //= require_tree .
 //= require_self

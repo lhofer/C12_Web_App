@@ -1,4 +1,5 @@
 <% if @entry.errors.any? %>
+	<div class = container>
 		<div id="error_explanation" >
 			<h3>
 				<%= pluralize(@entry.errors.count, "error") %> prohibited this entry from being saved: </h3>
@@ -8,6 +9,7 @@
 				    <% end %>
 			   </ul>
 		</div>
+	</div>
 <% end %>
 
 <%= simple_form_for(@entry) do |f| %>

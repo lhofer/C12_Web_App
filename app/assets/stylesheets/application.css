@@ -17,6 +17,10 @@
  *= require_self
  
  */
+ .navbar-right {
+     margin-top: 40px;
+ }
+ 
  .navbar_link {
      background:none!important;
      border:none; 
