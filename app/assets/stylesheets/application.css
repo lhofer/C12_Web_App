@@ -11,10 +11,11 @@
  * file per style scope.
  *
  *= require font-awesome
- *= require_tree .
- *= require_self
  *= require style
  *= require map.css
+ *= require_tree .
+ *= require_self
+ 
  */
  .navbar_link {
      background:none!important;
@@ -43,9 +44,7 @@
 .row {
     margin: 20px;
 }
-.row container-full {
-    margin: 0px !important;
-}
+
 label{
     margin: 10px;
 }
@@ -64,5 +63,6 @@ label{
 
 small {
     font-size: 24px;
-    font-weight: 100px;
+    font-weight: 100;
 }
+

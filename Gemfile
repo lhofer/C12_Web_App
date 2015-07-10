@@ -45,8 +45,6 @@ gem 'groupdate'
 # twitter bootstrap
 gem 'twitter-bootstrap-rails'
 
-# rails_12factor
-gem 'rails_12factor'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -61,7 +59,7 @@ group :development, :test do
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
-
+  
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
