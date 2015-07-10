@@ -5,60 +5,28 @@
 <script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
 <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/mapbox-directions.js/v0.3.0/mapbox.directions.js'></script>
 <style>
-    .notice-board {
+    body {
         background: rgb(108,167,220);
     }
-    
-    .panel-body {
-        padding: 0px !important;
-    }
-    .row container-full {
-        margin: 0px !important;
-    }
 </style>
-
-
-<div class = "container">
-    <div class="row">
-        <div class="col-md-12">
-            <h4 class="page-head-line">Welcome to C-12</h4>
+    <div class="modal fade" id="footprintModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"><span id="modal_distance"></span></h4>
+          </div>
         </div>
+      </div>
     </div>
-    
-    <!-- RENDER DASHBOARD BOXES -->
-    <div class="row">
-        <%= render 'layouts/dashboard'%>
-    </div>
- 
-    <!-- HISTORY TABLE -->
-    <div class="col-md-12">
-        <div class="notice-board">
-            <div class="panel panel-default">
-                <div class="panel-heading"><h3>Maps</h3></div>
-                    <div class="panel-body">
-                        <div class="modal fade" id="footprintModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                          <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="myModalLabel"><span id="modal_distance"></span></h4>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                    <div class="row container-full">
-                        <div id='map'>
-                            <div id='inputs'></div>
-                            <div id='errors'></div>
-                            <div class='row'>
-                                <div id='directions'>
-                                    <div id='routes'></div>
-                                    <div id='instructions'></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<div class="row container-full">
+    <div id='map'>
+        <div id='inputs'></div>
+        <div id='errors'></div>
+        <div class='row'>
+            <div id='directions'>
+                <div id='routes'></div>
+                <div id='instructions'></div>
             </div>
         </div>
     </div>
