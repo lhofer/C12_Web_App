@@ -1,143 +1,67 @@
-<html>
 <head>
-<meta charset=utf-8 />
-<title>Driving directions</title>
-<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-<script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
-<link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
-<style>
 
-#map { 
-    height:500px; 
-    width:auto 
-}
-.container-full {
-    width: auto; 
-}
+<style>
+    .notice-board {
+        background: rgb(108,167,220);
+    }
+    
+    .panel-body {
+        padding: 0px !important;
+    }
+    .container-full {
+        margin: 0px !important;
+    }
+    .alert alert-success {
+        padding: 20px;
+        overflow: auto;
+    }
 </style>
 </head>
-<body>
-<style>
-#control {
-    height:400px;
-    width: 600px;
-}
-#inputs,
-#errors,
-#directions {
-    position: absolute;
-    width: 33.3333%;
-    max-width: 300px;
-    min-width: 200px;
-}
 
-#inputs {
-    z-index: 10;
-    top: 10px;
-    left: 10px;
-}
-
-#directions {
-    z-index: 99;
-    background: rgba(0,0,0,.8);
-    top: 0;
-    right: 0;
-    bottom: 0;
-    overflow: auto;
+<div class = "container">
+    <div class="row">
+        <div class="col-md-12">
+            <h4 class="page-head-line">Welcome to C-12</h4>
+        </div>
+    </div>
+    <p class="alert alert-success">Sign up or sign in to start tracking your footprint today!</p>
+    <p class="alert alert-success">Try out our map or sign up for services include tracking and anylitics of your individual carbon footprint.</p>
     
-}
-
-#errors {
-    z-index: 8;
-    opacity: 0;
-    padding: 10px;
-    border-radius: 0 0 3px 3px;
-    background: rgba(0,0,0,.25);
-    top: 90px;
-    left: 10px;
-}
-
-</style>
-
-<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/mapbox-directions.js/v0.3.0/mapbox.directions.js'></script>
-<link rel='stylesheet' href='https://api.tiles.mapbox.com/mapbox.js/plugins/mapbox-directions.js/v0.3.0/mapbox.directions.css' type='text/css' />
-
-<div class="row container-full">
+    <!-- RENDER DASHBOARD BOXES -->
+    <div class="row">
+        <%= render 'layouts/dashboard'%>
+    </div>
+    
+    <!-- HISTORY TABLE -->
     <div class="col-md-12">
-        <div id='map'></div>
-        <div id='inputs'></div>
-        <div id='errors'></div>
-        <div id='directions'>
-            <div id='routes'></div>
-            <div id='instructions'></div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>Maps| <small>Find your way while thinking critically about the way you drive</small></h3>
+            </div>
+                <div class="modal fade" id="footprintModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel"><span id="modal_distance"></span></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="container-full">
+                <div id='map'>
+                    <div id='inputs'></div>
+                    <div id='errors'></div>
+                    <div class='row'>
+                        <div id='directions'>
+                            <div id='routes'></div>
+                            <div id='instructions'></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
-<script>
-L.mapbox.accessToken = 'pk.eyJ1IjoicmtyYWJlayIsImEiOiIzZjBkZDQ2OGJhNmRhYWZhNDdkZmE0YzMwYjkwNDNiYyJ9.4AsJUOjYe0gfKMrSjtb0Ww';
-var map = L.mapbox.map('map', 'mapbox.streets', {
-    zoomControl: false
-}).setView([40, -74.50], 9);
-
-// move the attribution control out of the way
-map.attributionControl.setPosition('bottomleft');
-
-// create the initial directions object, from which the layer
-// and inputs will pull data.
-var directions = L.mapbox.directions();
-var distance = directions.routes[0].distance;
-//directions.destination
-
-var directionsLayer = L.mapbox.directions.layer(directions)
-    .addTo(map);
-    
-
-var directionsInputControl = L.mapbox.directions.inputControl('inputs', directions)
-    .addTo(map);
-
-var directionsErrorsControl = L.mapbox.directions.errorsControl('errors', directions)
-    .addTo(map);
-
-var directionsRoutesControl = L.mapbox.directions.routesControl('routes', directions)
-    .addTo(map);
-
-
-
-
-var directionsInstructionsControl = L.mapbox.directions.instructionsControl('instructions', directions)
-    .addTo(map);
-
-
-function updateWhatever() {
-    console.log("i'm changin!");
-    $(".mapbox-directions-route").first().append("<p style='color:red'>WOW</p>");
-    // do whatever to the boxes  
-};
-
-$(function() {
-    $("input").change(function() {
-        console.log("i'm changin!");
-        $(".mapbox-directions-route").first().append("<p style='color:red'>WOW</p>");
-    });
-    //$("input").trigger('change')
-    
-    // $("#mapbox-directions-profile-walking").click(function() { alert("HELLO"); });
-    $("#directions").change(function() {
-        console.log("HAIIIII. Dis changed");
-    });
-    $("input").change();
-    
-    $(".mapbox-directions-inputs form").keypress(function(event) { 
-        if (event.keyCode === 13) {
-            updateWhatever();
-        } 
-    });
-    $("#mapbox-directions-profile-walking").click(updateWhatever); 
-    $("#mapbox-directions-profile-walking").click(updateWhatever); 
-    $("#mapbox-directions-profile-walking").click(updateWhatever);    
-});
-
-</script>
-</body>
-</html>
+</div>

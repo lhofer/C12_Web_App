@@ -35,15 +35,12 @@ To watch some training videos, visit http://www.youtube.com/user/c9ide
 
 ##TODO
 1. scroll through history, only display top 5-10
-2. new entry
-    a. take out of dashboard
-3. edit entry
-    a. edit modul
+
+2. edit entry
     b. make sure it works
-4. Dashboard
+3. Dashboard
     a. get started/about
-    b. change new entry to about us
-5. Bootstrap
+4. Bootstrap
     a. sign in sign out
-6. Map: get to work...
-7. Graphs: change graph
+5. Map: get to work...
+6. Graphs: change graph

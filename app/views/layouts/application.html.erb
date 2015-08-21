@@ -2,23 +2,27 @@
 <html>
     <head>
         <title>Workspace</title>
-            <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-            <%= javascript_include_tag 'application' %>
-            <%= csrf_meta_tags %>
+        <%= csrf_meta_tags %>
+        <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+        <link href='https://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+        <link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
+        <link rel='stylesheet' href='https://api.tiles.mapbox.com/mapbox.js/plugins/mapbox-directions.js/v0.3.0/mapbox.directions.css' type='text/css' />
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+        
     </head>
     <body>
-  
-        <header>
-            <%= render 'layouts/header' %>
-        </header>
-            <%= render 'layouts/nav' %>
+        <%= render 'layouts/nav' %>
 
         <%= yield %>
         
-        <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
         </br>
     <footer>
         <%= render 'layouts/footer' %>
+        
     </footer>
+        <script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
+        <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/mapbox-directions.js/v0.3.0/mapbox.directions.js'></script>        
+        <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     </body>
 </html>
