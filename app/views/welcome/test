@@ -1,0 +1,11 @@
+
+<p><%= @distance %></p>
+<p><%= @km %></p>
+<p>Carbon load <%= @carbon_load %></p>
+
+<%= render 'distance_form' %>
+
+
+m convert to miles
+/mpg
+*19.64 lbs of co2 per gallon

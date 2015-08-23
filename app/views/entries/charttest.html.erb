@@ -1,7 +1,3 @@
-<%= javascript_include_tag "//www.google.com/jsapi" %>
-<%= javascript_include_tag "path/to/highcharts.js", "chartkick" %>
-<%= javascript_include_tag "google.com/jsapi", "chartkick" %>
- 
     <!-- prep column chart data -->
     <% home_data(current_user, @home_data) %>
     <% car_data(current_user, @car_data) %>
@@ -17,10 +13,9 @@
                 <div class="notice-board">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3>Your Monthly Footprint</h3>
-                            <h5>lbs CO2</h5>
+                            <h3>Your Monthly Footprint| <small>lbs CO2</small></h3>
                         </div>
-                        <%= column_chart @data, stacked: true %> 
+                        <%= column_chart @data, stacked: true, content_for: :charts_js %> 
                     </div>
                 </div>
             </div>
@@ -32,13 +27,12 @@
                 <div class="notice-board">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3>Your Footprint Breakdown</h3>
-                            <h5>Over the past 12 months</h5>
+                            <h3>Your Footprint Breakdown| <small>Over the past 12 months</small></h3>
                         </div>
                         <% @entries.sort_by{|t| - t.created_at.to_i}.first(10).each do |entry| %> 
                             <% all_data(entry, @pie_data) %>
                         <% end %>
-                        <%= pie_chart @pie_data %>
+                        <%= pie_chart @pie_data, content_for: :charts_js %>
                     </div>
                 </div>
             </div>
@@ -47,11 +41,10 @@
                 <div class="notice-board">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3>Average Anual Footprint Breakdown</h3>
-                            <h5>In the United States</h5>
+                            <h3>Average Anual Footprint Breakdown| <small>In the United States</small></h3>
                         </div>
                         <% average_data(@average_data) %>
-                        <%= pie_chart @average_data %>
+                        <%= pie_chart @average_data, content_for: :charts_js %>
                     </div>
                 </div>
             </div>

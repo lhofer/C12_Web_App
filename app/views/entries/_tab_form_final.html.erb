@@ -1,4 +1,5 @@
 <% if @entry.errors.any? %>
+	<div class = container>
 		<div id="error_explanation" >
 			<h3>
 				<%= pluralize(@entry.errors.count, "error") %> prohibited this entry from being saved: </h3>
@@ -8,6 +9,7 @@
 				    <% end %>
 			   </ul>
 		</div>
+	</div>
 <% end %>
 
 <%= simple_form_for(@entry) do |f| %>
@@ -55,7 +57,7 @@
                         <div class = "modal_body">
                           <div class="row">
                             <div class="col-med-offset-3 col-md-6">
-                              <p><%= f.input :num_people, :label_html => { :class => 'text-right' }, :input_html=> { :class => "form-control" } %></p>
+                             <p><%= f.input :electricity, :placeholder  => "kWh", :label_html => { :class => 'text-right' }, :input_html=> { :class => "form-control" } %></p>
                             </div>
                           </div>
                         </div>
@@ -64,7 +66,7 @@
                         <div class = "modal_body">
                           <div class="row">
                             <div class="col-med-offset-3 col-md-6">
-                             <p><%= f.input :electricity, :label_html => { :class => 'text-right' }, :input_html=> { :class => "form-control" } %></p>
+                             <p><%= f.input :natural_gas, :placeholder  => "therms", :label_html => { :class => 'text-right' }, :input_html=> { :class => "form-control" } %></p>
                             </div>
                           </div>
                         </div>
@@ -73,16 +75,7 @@
                         <div class = "modal_body">
                           <div class="row">
                             <div class="col-med-offset-3 col-md-6">
-                             <p><%= f.input :natural_gas, :label_html => { :class => 'text-right' }, :input_html=> { :class => "form-control" } %></p>
-                            </div>
-                          </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class = "modal_body">
-                          <div class="row">
-                            <div class="col-med-offset-3 col-md-6">
-                             <p><%= f.input :heating_oil, :label_html => { :class => 'text-right' }, :input_html=> { :class => "form-control" } %></p>
+                             <p><%= f.input :heating_oil,  :placeholder  => "gal", :label_html => { :class => 'text-right' }, :input_html=> { :class => "form-control" } %></p>
                             </div>
                           </div>
                         </div>
@@ -92,14 +85,14 @@
                 <div class = "modal_body">
                     <div class="row">
                         <div class="col-med-offset-3 col-md-6">
-                            <p><%= f.input :mpg, :label_html => { :class => 'text-right' }, :input_html=> { :class => "form-control" } %></p>
+                            <p><%= f.input :mpg,  :placeholder  => "mpg", :label_html => { :class => 'text-right' }, :input_html=> { :class => "form-control" } %></p>
                         </div>
                     </div>
                 </div>
                 <div class = "modal_body">
                     <div class="row">
                         <div class="col-med-offset-3 col-md-6">                    
-                            <p><%= f.input :miles_driven, :label_html => { :class => 'text-right' }, :input_html=> { :class => "form-control" } %></p>
+                            <p><%= f.input :miles_driven,  :placeholder  => "mi", :label_html => { :class => 'text-right' }, :input_html=> { :class => "form-control" } %></p>
                         </div>
                     </div>
                 </div>

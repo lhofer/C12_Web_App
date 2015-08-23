@@ -1,17 +1,76 @@
-<h2>Sign up</h2>
+<!--SIGN UP-->
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+<div class = "container">
+    <div class="row">
+        <div class="col-md-12">
+            <h4 class="page-head-line">Welcome to C-12</h4>
+        </div>
+    </div>
+    
+    <!-- RENDER DASHBOARD BOXES -->
+    <div class="row">
+        <%= render 'layouts/dashboard'%>
+    </div>
+    
+    <div class="conatiner">
+        <div class="c-wrapper">
+            <div class ="row">
+                <div class="col-md-6">
+                    <div class="Compose-Message">               
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <h2>Sign Up And Make A Change!</h2>
+                            </div>
+                            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                              <%= f.error_notification %>                              <div class="form-inputs">
+                                  <div class="row">
+                                      <div class="col-med-offset-3 col-md-6">
+                                          <%= f.input :email, required: false, autofocus: true,
+                                          :label_html => { :class => 'text-right' }, :input_html=> { :class => "form-control" } %>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="form-inputs">
+                                  <div class="row">
+                                      <div class="col-med-offset-3 col-md-6">
+                                          <%= f.input :password, required: true,
+                                          :label_html => { :class => 'text-right' }, :input_html=> { :class => "form-control" } %>
+                                      </div>
+                                  </div>
+                              </div>
+                            
+                              <div class="form-inputs">
+                                  <div class="row">
+                                      <div class="col-med-offset-3 col-md-6">
+                                          <%= f.input :password_confirmation, required: true,
+                                          :label_html => { :class => 'text-right' }, :input_html=> { :class => "form-control" } %>
+                                      </div>
+                                  </div>
+                              </div>
+                              
+                                <div class="form-actions">
+                                    <div class="row">
+                                        <div class="col-med-offset-3 col-md-6">
+                                            <%= f.button :submit, "Sign up", :class  => "btn btn-success",
+                                            :label_html => { :class => 'text-right' }, :input_html=> { :class => "form-control" } %>
+                                        </div>
+                                    </div>
+                                </div>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-    <%= f.input :password_confirmation, required: true %>
-  </div>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+                <%= render 'layouts/avg_pie_chart' %>
+            </div>
+        </div>
+    </div>
+</div>
+                            
+                            
+                            
+                            
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
+                            
+                  
 
-<%= render "devise/shared/links" %>

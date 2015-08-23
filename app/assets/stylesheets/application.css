@@ -11,12 +11,22 @@
  * file per style scope.
  *
  *= require font-awesome
+ *= require style
+ *= require map.css
  *= require_tree .
  *= require_self
+<<<<<<< HEAD
  *= require style
  *= require styles
 
+=======
+ 
+>>>>>>> 1de080543ef47fa6bf81984028a6312bc3af0e71
  */
+ .navbar-right {
+     margin-top: 40px;
+ }
+ 
  .navbar_link {
      background:none!important;
      border:none; 
@@ -32,6 +42,10 @@
          text-decoration:underline;
 }
 
+.nav.nav-tabs a {
+    color: black;
+}
+
 .tabbable {
     margin: 40px;
     padding: 20px;
@@ -44,9 +58,25 @@
 .row {
     margin: 20px;
 }
+
 label{
     margin: 10px;
 }
 .panel-heading {
     padding: 30px;
 }
+
+.panel-body {
+    line-height: 30px;
+}
+
+.company_title {
+    padding: 20px 0 0 0;
+    font-size: 40px;
+}
+
+small {
+    font-size: 24px;
+    font-weight: 100;
+}
+

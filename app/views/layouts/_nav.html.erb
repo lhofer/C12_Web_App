@@ -1,42 +1,28 @@
-    <!-- HEADER END-->
-    <div class="navbar navbar-inverse set-radius-zero">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">
-                </a>
-            </div>
-                <div class="left-div">
-                <div class="user-settings-wrapper">
-                </div>
-            </div>
-        </div>
-    </div>
+
     <!-- LOGO HEADER END-->
     <section class="menu-section">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="navbar-collapse collapse ">
+                        <ul id="menu-top" class="nav navbar-nav navbar-left">  
+                            <li><div class = 'company_title'>C-12| <small>Know your footprint.</small></div></li>
+                        </ul>
+
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
                             <li><a href="/entries">Dashboard</a></li>
+                            <li><a href="/">Maps</a></li>
                             <li><a href="/about">About Us</a></li>
                             <li><a href="/contact">Contact</a></li>
                             <% if user_signed_in? %>
-                                <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
+                                <li><%= link_to "Logout", destroy_user_session_path, method: :delete%></li>
                             <% else %>
                                 <li><%= link_to "Sign up", new_user_registration_path %></li>
                                 <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></li>
-
                             <% end %>
                         </ul>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>

@@ -1,0 +1,10 @@
+<div class="col-md-6">
+    <div class="notice-board">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>The Average Footprint| <small>lbs CO2 per person on average in the United States</small></h3>
+            </div>
+               <%= pie_chart [["Home", avg_home_data.round(0)], ["Car", avg_car_data.round(0)], ["Diet", avg_diet_data.round(0)]], content_for: :charts_js %>
+        </div>
+    </div>
+</div>

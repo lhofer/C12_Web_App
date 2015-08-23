@@ -1,0 +1,128 @@
+
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
+<link rel='stylesheet' href='https://api.tiles.mapbox.com/mapbox.js/plugins/mapbox-directions.js/v0.3.0/mapbox.directions.css' type='text/css' />
+<script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
+<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/mapbox-directions.js/v0.3.0/mapbox.directions.js'></script>
+<style>
+    body {
+        background: rgb(108,167,220);
+    }
+</style>
+    <div class="modal fade" id="footprintModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"><span id="modal_distance"></span></h4>
+          </div>
+        </div>
+      </div>
+    </div>
+<div class="row container-full">
+    <div id='map'>
+        <div id='inputs'></div>
+        <div id='errors'></div>
+        <div class='row'>
+            <div id='directions'>
+                <div id='routes'></div>
+                <div id='instructions'></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+L.mapbox.accessToken = 'pk.eyJ1IjoicmtyYWJlayIsImEiOiIzZjBkZDQ2OGJhNmRhYWZhNDdkZmE0YzMwYjkwNDNiYyJ9.4AsJUOjYe0gfKMrSjtb0Ww';
+var map = L.mapbox.map('map', 'mapbox.streets', {
+    zoomControl: false
+}).setView([40, -74.50], 9);
+
+// move the attribution control out of the way
+map.attributionControl.setPosition('bottomleft');
+
+// create the initial directions object, from which the layer
+// and inputs will pull data.
+var directions = L.mapbox.directions();
+// directions = {
+//     directions: (routes:[].distance}
+// }
+var distance = [];
+var carbon_load = [];
+function calcDistanceCarbon(){
+    distance = []
+    directions.directions.routes.forEach(function(route){
+        distance.push(route.distance);
+    });
+    carbon_load = [];
+    distance.forEach(function(meters){
+        carbon_load.push(Math.round(((meters*0.000621371)/25.5)*19.64));
+    });
+}
+
+
+var directionsLayer = L.mapbox.directions.layer(directions)
+    .addTo(map);
+    
+
+var directionsInputControl = L.mapbox.directions.inputControl('inputs', directions)
+    .addTo(map);
+
+var directionsErrorsControl = L.mapbox.directions.errorsControl('errors', directions)
+    .addTo(map);
+
+var directionsRoutesControl = L.mapbox.directions.routesControl('routes', directions)
+    .addTo(map);
+
+var directionsInstructionsControl = L.mapbox.directions.instructionsControl('instructions', directions)
+    .addTo(map);
+// var distance = directions.routes[0].distance;
+
+function updateWhatever() {
+    console.log("i'm testing!");
+    $(".mapbox-directions-route").first().append("<p style='color:red'>WOW</p>");
+    // distance.push(directions.directions.routes[0].distance);
+    //  distance = directions.directions.routes[0].distance;
+    $("#modal_distance").html("<p>" + distance + "</p>");
+
+    // do whatever to the boxes  
+};
+
+$(function() {
+
+    $("input").change(function() {
+        console.log("i'm changin!");
+        // console.log( Object.keys(directions).includes("routes")) 
+
+        $(".mapbox-directions-route").first().append("<p style='color:red'>WOW</p>");
+        // distance = directions.directions.routes[0].distance;
+    // $("#modal_distance").html("<p>" + distance + "</p>");
+    });
+    //$("input").trigger('change')
+    
+    // $("#mapbox-directions-profile-walking").click(function() { alert("HELLO"); });
+    $("#directions").change(function() {
+        console.log("HAIIIII. Dis changed");
+    });
+    $("input").change();
+    
+    $(".mapbox-directions-inputs form").keypress(function(event) { 
+        if (event.keyCode === 13) {
+            updateWhatever();
+        } 
+    });
+    $("#mapbox-directions-profile-walking").click(updateWhatever); 
+    $("#mapbox-directions-profile-driving").click(function () {
+        calcDistanceCarbon();
+        // distance = directions.directions.routes[0].distance;
+        $("#modal_distance").html("<p>At the US average of 25.5mpg:</p>")
+        carbon_load.forEach(function(lbs, i){
+            $("#modal_distance").append("<p>Route " + (i+1) + " CO2 emissions: " + lbs + " lbs</p>");
+        });
+        $("#footprintModal").modal()
+    });
+    $("#mapbox-directions-profile-cycling").click(updateWhatever);   
+
+});
+
+</script>
