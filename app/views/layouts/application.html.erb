@@ -13,8 +13,17 @@
     </head>
     <body>
         <%= render 'layouts/nav' %>
+        <% if user_signed_in? %>
+        <br><br><br>
+            <div class = "container marketing">
+        <% else %>
+            <%= render 'layouts/carousel' %>
+            <div class = "container marketing">
+        <% end %>
 
         <%= yield %>
+
+        </div>
         
         </br>
     <footer>

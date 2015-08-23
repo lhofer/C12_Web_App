@@ -45,6 +45,11 @@ body {
   min-height: 400px;
 }
 
+.yellow {
+  background-color:#FFCC00; 
+  color:white;
+}
+
 
 
 /* MARKETING CONTENT
