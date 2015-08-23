@@ -9,33 +9,33 @@
   </ol>
   <div class="carousel-inner">
     <div class="item active">
-      <img src="/assets/example/bg_suburb.jpg" style="width:100%" class="img-responsive">
+      <img src="/assets/road_img.jpg" style="width:100%" class="img-responsive">
       <div class="container">
         <div class="carousel-caption">
           <h1>Bootstrap 3 Carousel Layout</h1>
           <p></p>
-          <p><a class="btn btn-lg btn-primary" href="http://getbootstrap.com">Learn More</a>
+          <p><a class="btn btn-lg btn-warning" href="http://getbootstrap.com">Learn More</a>
         </p>
         </div>
       </div>
     </div>
     <div class="item">
-      <img src="assets/green_road_image3.jpg" class="img-responsive">
+      <img src="assets/lights_img.jpg" class="img-responsive">
       <div class="container">
         <div class="carousel-caption">
           <h1>Changes to the Grid</h1>
           <p>Bootstrap 3 still features a 12-column grid, but many of the CSS class names have completely changed.</p>
-          <p><a class="btn btn-large btn-primary" href="#">Learn more</a></p>
+          <p><a class="btn btn-lg btn-warning" href="#">Learn more</a></p>
         </div>
       </div>
     </div>
     <div class="item">
-      <img src="http://placehold.it/1500X500" class="img-responsive">
+    <img src="assets/concat_img.jpg" class="img-responsive">
       <div class="container">
         <div class="carousel-caption">
           <h1>Percentage-based sizing</h1>
           <p>With "mobile-first" there is now only one percentage-based grid.</p>
-          <p><a class="btn btn-large btn-primary" href="#">Browse gallery</a></p>
+          <p><a class="btn btn-lg btn-warning" href="#">Browse gallery</a></p>
         </div>
       </div>
     </div>
@@ -50,21 +50,60 @@
 </div>
 <!-- /.carousel -->
 
-<div class = "container">
-    <div class="row">
-        <div class="col-md-12">
-            <h4 class="page-head-line">Welcome to C-12</h4>
-        </div>
+<div class = "container marketing">
+
+  <!-- Three columns of text below the carousel -->
+  <div class="row">
+    <div class="col-md-4 text-center">
+    <div class="dashboard-div-wrapper bk-clr-two">
+        <i  class="fa fa-edit dashboard-div-icon" ></i>
     </div>
-    <p class="alert alert-success">Sign up or sign in to start tracking your footprint today!</p>
-    <p class="alert alert-success">Try out our map or sign up for services include tracking and anylitics of your individual carbon footprint.</p>
-    
-    <!-- RENDER DASHBOARD BOXES -->
-    <div class="row">
-        <%= render 'layouts/dashboard'%>
+    <h2>Learn</h2>
+      <p>Facts about CO2 emissions and strategies for reducing individual carbon footprints.</p>
+      <p><a class="btn btn-default" href="/about">View details »</a></p>
     </div>
-    
-    <!-- HISTORY TABLE -->
+    <div class="col-md-4 text-center">
+    <div class="dashboard-div-wrapper bk-clr-three">
+        <i  class="fa fa-cogs dashboard-div-icon" ></i>
+    </div>      
+    <h2>Track</h2>
+      <p>Sign up for your personal carbon emission tracker and start tracking your journey today.</p>
+      <p><a class="btn btn-default" href="#">About »</a></p>
+    </div>
+    <div class="col-md-4 text-center">
+    <div class="dashboard-div-wrapper bk-clr-four">
+        <i  class="fa fa-bell-o dashboard-div-icon" ></i>
+    </div>      
+    <h2>Reduce</h2>
+      <p>Keep on top of your footprint and watch it shrink.</p>
+      <p><a class="btn btn-default" href="#">Get started »</a></p>
+    </div>
+  </div><!-- /.row -->
+
+
+
+  <!-- START THE FEATURETTES -->
+
+  <hr class="featurette-divider">
+
+  <div class="featurette">
+    <img class="featurette-image pull-right" src="assets/80_pie_chart.jpg">
+    <h2 class="featurette-heading">Get Informed. <span class="text-muted">Facts, figures, and more.</span></h2>
+    <p class="lead">A great first step is reading up on how your actions actually translate into a meaningful carbon footprint. Without understanding where you're starting from it's hard to know where to go to improve.</p>
+  </div>
+
+  <hr class="featurette-divider">
+
+
+    <div class="featurette">
+    <img class="featurette-image pull-left" src="assets/70_bar_chart.jpg">
+    <h2 class="featurette-heading">Smaller Footprint. <span class="text-muted">Lightweight.</span></h2>
+    <p class="lead">The new Bootstrap 3 promises to be a smaller build. The separate Bootstrap base and responsive.css files have now been merged into one. There is no more fixed grid, only fluid.</p>
+  </div>
+
+  <hr class="featurette-divider">
+
+    <!-- MAP -->
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
