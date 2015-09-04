@@ -1,5 +1,5 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
-<div class = "container"   
+<div class = "container">   
     <!-- DASHBOARD HEADER -->
     <div class="content-wrapper">
         <div class="container">
@@ -89,7 +89,7 @@
                                     <% @data = [ {name: "Home", data: @home_data}, {name: "Car", data: @car_data}, {name: "Diet", data: @diet_data} ].reverse! %>
                                     
                                     <!-- column chart -->
-                                    <%= column_chart @data, stacked: true %>  
+                                    <%= column_chart @data, stacked: true, content_for: :charts_js %>  
                                <% end %>
                             </div>
                         </div>

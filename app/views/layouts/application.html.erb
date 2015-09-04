@@ -13,8 +13,17 @@
     </head>
     <body>
         <%= render 'layouts/nav' %>
+        <% if user_signed_in? %>
+        <br><br><br>
+            <div class = "container marketing">
+        <% else %>
+            <%= render 'layouts/carousel' %>
+            <div class = "container marketing">
+        <% end %>
 
         <%= yield %>
+
+        </div>
         
         </br>
     <footer>
@@ -22,7 +31,11 @@
         
     </footer>
         <script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
-        <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/mapbox-directions.js/v0.3.0/mapbox.directions.js'></script>        
+        <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/mapbox-directions.js/v0.3.0/mapbox.directions.js'></script>
+        <%= javascript_include_tag "http://google.com/jsapi", "chartkick" %> 
+        <%= javascript_include_tag "application", "chartkick" %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+        <%= yield :charts_js %>    
     </body>
 </html>
