@@ -3,7 +3,7 @@
 ###July 2015
 
 ##About
-P
+C-12's goal is to facilitate personalized tracking of one's carbon footprint and raise awareness for the importance of sustainability and the impact of human activity on the environment.
 
 ##Built With
 1. Ruby on Rails
