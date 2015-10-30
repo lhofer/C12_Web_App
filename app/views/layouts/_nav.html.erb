@@ -1,4 +1,3 @@
-
     <!-- LOGO HEADER END-->
     <section class="menu-section">
         <div class="container">
@@ -10,8 +9,12 @@
                         </ul>
 
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
-                            <li><a href="/entries">Dashboard</a></li>
-                            <li><a href="/">Maps</a></li>
+                            <% if user_signed_in? %>
+                                <li><a href="/entries">Dashboard</a></li>
+                            <% else %>
+                                <li><a href="/">Home</a></li>
+                            <% end %>
+                            <li><a href="/map">Maps</a></li>
                             <li><a href="/about">About Us</a></li>
                             <li><a href="/contact">Contact</a></li>
                             <% if user_signed_in? %>

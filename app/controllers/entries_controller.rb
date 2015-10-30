@@ -56,7 +56,7 @@ class EntriesController < ApplicationController
     def destroy
         entry = current_user.entries.find params[:id]
 	 	entry.destroy
-	 	redirect_to charttest_path
+	 	redirect_to entries_path
     end
     
     private

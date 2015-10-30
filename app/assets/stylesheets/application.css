@@ -15,7 +15,13 @@
  *= require map.css
  *= require_tree .
  *= require_self
+<<<<<<< HEAD
+ *= require style
+ *= require styles
+
+=======
  
+>>>>>>> 1de080543ef47fa6bf81984028a6312bc3af0e71
  */
  .navbar-right {
      margin-top: 40px;
@@ -43,6 +49,10 @@
 .tabbable {
     margin: 40px;
     padding: 20px;
+}
+
+.nav.nav-tabs a {
+    color: black;
 }
 
 .row {

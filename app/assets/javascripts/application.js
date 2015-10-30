@@ -12,10 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require twitter/bootstrap
+//= require carbon_map
 //= require highcharts
 //= require chartkick
-//= require twitter/bootstrap
 //= require turbolinks
-//= require carbon_map
 //= require_tree .
 //= require_self
